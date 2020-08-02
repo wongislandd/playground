@@ -1,3 +1,4 @@
-include ':api'
+include ':module-database'
+include ':module-api'
 include ':app'
 rootProject.name = "playground"

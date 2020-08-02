@@ -29,9 +29,12 @@ kapt {
 }
 
 dependencies {
-    def nav_version = "2.3.0"
+    // Implement project modules
+    implementation project(':module-api')
+    implementation project(':module-database')
 
-    implementation project(':api')
+
+    def nav_version = "2.3.0"
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

@@ -1,6 +1,5 @@
-package com.cwong51799.playground.ModuleSelection
+package com.cwong51799.playground.module_selection
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,8 @@ import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import com.cwong51799.api.APIActivity
 import com.cwong51799.playground.R
+import com.cwong51799.playground.utils.Module
+import com.cwong51799.playground.utils.ModuleUtils
 
 
 class ModuleSelectorFragment : Fragment() {
@@ -22,19 +23,18 @@ class ModuleSelectorFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        // Create a LinearLayout element
         val selectionView = view.findViewById<LinearLayout>(R.id.selectionView)
-        // Add Buttons
-        for (x in 0 .. 5) {
+        // Generate a new module view for each module
+        for (module in ModuleUtils.moduleList) {
             selectionView.addView(
                 ModuleOptionView(
-                    module = APIActivity::class.java,
-                    context = view.context,
-                    backgroundResource = R.drawable.sparkle_background
+                    moduleName = module.name,
+                    moduleClass = module.activityClass,
+                    backgroundResource = module.backgroundResource,
+                    context = view.context
                 )
             )
         }
-        // Add the LinearLayout element to the ScrollView
         super.onViewCreated(view, savedInstanceState)
     }
 }

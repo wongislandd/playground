@@ -1,0 +1,9 @@
+August 2, 2020:
+
+When adding a new module:
+
+1. Create a new Android Module
+2. Go into the modules build.gradle and on the top line change:
+apply plugin: 'com.android.application' -> apply plugin: 'com.android.library'
+3. In app>dagger>AppModule, create a new abstract fun using the @ContributesAndroidInjector annotation
+4. In ModuleUtils, add a new module containing the corresponding module information in moduleList
