@@ -1,22 +1,11 @@
 package com.cwong51799.playground
 
-import android.app.Activity
-import android.app.Application
-import com.cwong51799.playground.di.DaggerAppComponent
+import com.cwong51799.playground.dagger.DaggerAppComponent
 import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
-import javax.inject.Inject
+import dagger.android.DaggerApplication
 
-
-class App : Application(), HasActivityInjector {
-    @Inject
-    lateinit var dispatchingActivityInjector: DispatchingAndroidInjector<Activity>
-
-    override fun onCreate() {
-        super.onCreate()
-        DaggerAppComponent.create().inject(this)
+class App : DaggerApplication() {
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        return DaggerAppComponent.builder().application(this).build()
     }
-
-    override fun activityInjector(): AndroidInjector<Activity> = dispatchingActivityInjector
 }

@@ -1,4 +1,4 @@
-package com.cwong51799.playground.di
+package com.cwong51799.playground.dagger
 
 import javax.inject.Scope
 
