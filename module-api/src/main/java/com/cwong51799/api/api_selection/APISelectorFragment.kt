@@ -32,8 +32,7 @@ class APISelectorFragment : Fragment() {
         for (api in APIUtils.apiList) {
             selectionView.addView(
                 APIOptionView(
-                    apiName = api.name,
-                    backgroundResource = api.backgroundResource,
+                    associatedApi = api,
                     context = view.context
                 )
             )

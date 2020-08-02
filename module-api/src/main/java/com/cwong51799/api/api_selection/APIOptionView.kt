@@ -8,18 +8,18 @@ import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.cwong51799.api.R
+import com.cwong51799.api.utils.API
 import kotlinx.android.synthetic.main.api_option_view.view.*
 
 class APIOptionView @JvmOverloads constructor(
-    apiName : String,
+    associatedApi : API,
     context : Context,
-    backgroundResource : Int,
     attrs : AttributeSet? = null
 ) : ConstraintLayout(context, attrs) {
 
     init{
         LayoutInflater.from(context).inflate(R.layout.api_option_view, this, true)
-        apiOptionParentView.setBackgroundResource(backgroundResource)
+        apiOptionParentView.setBackgroundResource(associatedApi.backgroundResource)
         apiOptionNameTV.visibility = View.GONE
         apiOptionParentView.setOnClickListener{
             // Switch to a different fragment
