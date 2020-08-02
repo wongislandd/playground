@@ -13,8 +13,8 @@ data class Module (val name : String, val activityClass : Class<out Any>, val ba
  */
 object ModuleUtils {
     val moduleList = listOf(
-        Module("API Tester", APIActivity::class.java, R.drawable.sparkle_background),
-        Module("Database Tester", DatabaseActivity::class.java, R.drawable.flower_background),
+        Module("API Tester", APIActivity::class.java, R.drawable.flower_background),
+        Module("Database Tester", DatabaseActivity::class.java, R.drawable.database_background),
         Module("Hajime Module", HajimeActivity::class.java, R.drawable.sparkle_background)
     )
 }

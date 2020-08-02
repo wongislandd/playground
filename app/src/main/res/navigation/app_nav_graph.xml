@@ -9,5 +9,5 @@
         android:id="@+id/moduleSelectorFragment"
         android:name="com.cwong51799.playground.module_selection.ModuleSelectorFragment"
         android:label="fragment_module_selector"
-        tools:layout="@layout/fragment_module_selector" />
+        tools:layout="@layout/module_selector_fragment" />
 </navigation>

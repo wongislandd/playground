@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/APISelector">
+
+    <fragment
+        android:id="@+id/APISelector"
+        android:name="com.cwong51799.api.api_selection.APISelectorFragment"
+        android:label="selector_fragment"
+        tools:layout="@layout/selector_fragment" />
+</navigation>
