@@ -19,5 +19,6 @@ class ModuleOptionView @JvmOverloads constructor(
     init{
         LayoutInflater.from(context).inflate(R.layout.module_option_view, this, true)
         moduleOptionParentView.setBackgroundResource(backgroundResource)
+        moduleOptionParentView.setOnClickListener{startActivity(context, Intent(context,module), null)}
     }
 }
