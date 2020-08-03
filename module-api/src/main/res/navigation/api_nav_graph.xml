@@ -17,10 +17,18 @@
             app:exitAnim="@android:anim/slide_in_left"
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_APISelector_to_randomFact"
+            app:destination="@id/randomFactAPI" />
     </fragment>
     <fragment
         android:id="@+id/pokeAPI"
         android:name="com.cwong51799.api.pokeapi.PokeAPIFragment"
         android:label="fragment_poke_api"
         tools:layout="@layout/fragment_poke_api" />
+    <fragment
+        android:id="@+id/randomFactAPI"
+        android:name="com.cwong51799.api.randomfactapi.RandomFactFragment"
+        android:label="fragment_random_fact"
+        tools:layout="@layout/fragment_random_fact" />
 </navigation>

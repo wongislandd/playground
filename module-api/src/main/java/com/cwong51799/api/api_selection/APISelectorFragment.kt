@@ -12,16 +12,17 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.cwong51799.api.R
 import com.cwong51799.api.utils.API
+import com.cwong51799.api.utils.APIViewModel
 import com.cwong51799.api.utils.APIUtils
 
 class APISelectorFragment : Fragment() {
-    private lateinit var viewModel: APISelectorViewModel
+    private lateinit var viewModel: APIViewModel
     private lateinit var navController : NavController
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProviders.of(this).get(APISelectorViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(APIViewModel::class.java)
         navController = NavHostFragment.findNavController(this)
         return inflater.inflate(R.layout.fragment_selector, container, false)
     }
@@ -52,6 +53,7 @@ class APISelectorFragment : Fragment() {
     fun goToAPI(api : API) {
         val nextScreen = when(api.name) {
             APIUtils.PokeAPIName -> R.id.pokeAPI
+            APIUtils.RandomFactAPIName -> R.id.randomFactAPI
             else -> R.id.pokeAPI
         }
         navController.navigate(nextScreen)
