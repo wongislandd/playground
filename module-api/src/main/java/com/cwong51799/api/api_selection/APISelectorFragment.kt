@@ -7,43 +7,59 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.lifecycle.observe
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.cwong51799.api.R
+import com.cwong51799.api.utils.API
 import com.cwong51799.api.utils.APIUtils
 
 class APISelectorFragment : Fragment() {
-
-    companion object {
-        fun newInstance() =
-            APISelectorFragment()
-    }
-
     private lateinit var viewModel: APISelectorViewModel
-
+    private lateinit var navController : NavController
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.selector_fragment, container, false)
+        viewModel = ViewModelProviders.of(this).get(APISelectorViewModel::class.java)
+        navController = NavHostFragment.findNavController(this)
+        return inflater.inflate(R.layout.fragment_selector, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val selectionView = view.findViewById<LinearLayout>(R.id.apiSelectorSV)
         // Generate a new module view for each module
         for (api in APIUtils.apiList) {
-            selectionView.addView(
-                APIOptionView(
-                    associatedApi = api,
-                    context = view.context
-                )
+            val newOptionView = APIOptionView(
+                associatedApi = api,
+                context = view.context
             )
+            newOptionView.setOnClickListener{
+                viewModel.select(api)
+            }
+            selectionView.addView(newOptionView)
+        }
+        // Subscribe to a change in the selected API
+        viewModel.selectedAPI.observe(viewLifecycleOwner) {
+            if (it != null) {
+                goToAPI(it)
+                viewModel.resetSelected()
+            }
         }
         super.onViewCreated(view, savedInstanceState)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(APISelectorViewModel::class.java)
-        // TODO: Use the ViewModel
+    fun goToAPI(api : API) {
+        val nextScreen = when(api.name) {
+            APIUtils.PokeAPIName -> R.id.pokeAPI
+            else -> R.id.pokeAPI
+        }
+        navController.navigate(nextScreen)
+    }
+
+
+    companion object {
+        private const val TAG = "APISelectorFragment"
     }
 
 }

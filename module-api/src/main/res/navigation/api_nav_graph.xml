@@ -9,5 +9,18 @@
         android:id="@+id/APISelector"
         android:name="com.cwong51799.api.api_selection.APISelectorFragment"
         android:label="selector_fragment"
-        tools:layout="@layout/selector_fragment" />
+        tools:layout="@layout/fragment_selector" >
+        <action
+            android:id="@+id/action_APISelector_to_pokeAPI"
+            app:destination="@id/pokeAPI"
+            app:enterAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/slide_in_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/pokeAPI"
+        android:name="com.cwong51799.api.pokeapi.PokeAPIFragment"
+        android:label="fragment_poke_api"
+        tools:layout="@layout/fragment_poke_api" />
 </navigation>

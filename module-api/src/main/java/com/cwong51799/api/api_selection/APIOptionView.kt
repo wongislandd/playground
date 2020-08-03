@@ -3,6 +3,7 @@ package com.cwong51799.api.api_selection
 import android.content.Context
 import android.content.Intent
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -21,8 +22,5 @@ class APIOptionView @JvmOverloads constructor(
         LayoutInflater.from(context).inflate(R.layout.api_option_view, this, true)
         apiOptionParentView.setBackgroundResource(associatedApi.backgroundResource)
         apiOptionNameTV.visibility = View.GONE
-        apiOptionParentView.setOnClickListener{
-            // Switch to a different fragment
-        }
     }
 }

@@ -17,7 +17,7 @@ class ModuleSelectorFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.module_selector_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_module_selector, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
