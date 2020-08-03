@@ -8,9 +8,10 @@
 
     <Button
         android:id="@+id/factFinderBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Find a Fact"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="111dp"
+        android:layout_height="50dp"
+        android:text="@string/new_fact"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -24,7 +25,7 @@
         android:layout_height="360dp"
         android:fontFamily="serif-monospace"
         android:gravity="center"
-        android:textSize="36dp"
+        android:textSize="@dimen/standardTextSize"
         app:layout_constraintBottom_toTopOf="@+id/factFinderBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

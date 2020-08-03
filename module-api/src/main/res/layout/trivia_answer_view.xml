@@ -6,28 +6,22 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/apiOptionParentView"
+        android:id="@+id/triviaOptionParentView"
         android:layout_width="match_parent"
-        tools:background="@drawable/opentdb_background"
         android:layout_height="150dp">
 
-        <TextView
-            android:id="@+id/apiOptionNameTV"
+        <Button
+            android:id="@+id/triviaOptionBtn"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:fontFamily="sans-serif-black"
-            android:gravity="center"
-            android:textColor="#533D3D"
-            android:textSize="50dp"
+            android:layout_height="wrap_content"
+            android:text="Button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Placeholder Answer" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@android:color/darker_gray"/>
 
 </merge>

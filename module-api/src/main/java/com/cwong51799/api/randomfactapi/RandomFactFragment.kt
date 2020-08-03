@@ -8,14 +8,13 @@ import android.view.ViewGroup
 import retrofit2.converter.moshi.MoshiConverterFactory
 import android.widget.Button
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.observe
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.cwong51799.api.R
-import com.squareup.moshi.Moshi
+import com.cwong51799.api.utils.APIUtils
 import retrofit2.*
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
@@ -23,7 +22,12 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class RandomFactFragment : Fragment() {
+    private lateinit var viewModel: RandomFactViewModel
+    private lateinit var navController : NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        viewModel = ViewModelProviders.of(this).get(RandomFactViewModel::class.java)
+        navController = NavHostFragment.findNavController(this)
         super.onCreate(savedInstanceState)
     }
 
@@ -37,22 +41,25 @@ class RandomFactFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val factText = view.findViewById<TextView>(R.id.factTextTV)
+        viewModel.currentFact.observe(viewLifecycleOwner) {
+            factText.text = it
+        }
         val factFinder = view.findViewById<Button>(R.id.factFinderBtn)
-        val retrofit = Retrofit.Builder().baseUrl("https://uselessfacts.jsph.pl/").addConverterFactory(MoshiConverterFactory.create()).build()
-        val factAPI = retrofit.create(RandomFactServices::class.java)
+        val retrofit = Retrofit.Builder().baseUrl(APIUtils.RANDOM_FACT_API_BASE_URL).addConverterFactory(MoshiConverterFactory.create()).build()
+        val FactApi = retrofit.create(RandomFactServices::class.java)
         factFinder.setOnClickListener {
-            val call = factAPI.getFact()
-            call.enqueue(object : Callback<Fact> {
-                override fun onFailure(call: Call<Fact>, t: Throwable) {
+            val call = FactApi.getFact()
+            call.enqueue(object : Callback<FactResponse> {
+                override fun onFailure(call: Call<FactResponse>, t: Throwable) {
                     factText.text = t.message
                 }
 
-                override fun onResponse(call: Call<Fact>, response: Response<Fact>) {
+                override fun onResponse(call: Call<FactResponse>, response: Response<FactResponse>) {
                     if(!response.isSuccessful){
                         factText.text = "Code: " + response.code()
                         return
                     }
-                    factText.text = response.body()?.text ?: "Null"
+                    viewModel.changeCurrentFact(response.body()?.text ?: emptyResponseBodyStr)
                 }
             })
         }
@@ -60,6 +67,6 @@ class RandomFactFragment : Fragment() {
     }
 
     companion object {
-
+        const val emptyResponseBodyStr = "Response body empty."
     }
 }

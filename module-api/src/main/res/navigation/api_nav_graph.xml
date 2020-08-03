@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_APISelector_to_randomFact"
             app:destination="@id/randomFactAPI" />
+        <action
+            android:id="@+id/action_APISelector_to_triviaAPI"
+            app:destination="@id/triviaAPI" />
     </fragment>
     <fragment
         android:id="@+id/pokeAPI"
@@ -31,4 +34,8 @@
         android:name="com.cwong51799.api.randomfactapi.RandomFactFragment"
         android:label="fragment_random_fact"
         tools:layout="@layout/fragment_random_fact" />
+    <fragment
+        android:id="@+id/triviaAPI"
+        android:name="com.cwong51799.api.opentriviadb.TriviaFragment"
+        android:label="fragment_trivia_api" />
 </navigation>

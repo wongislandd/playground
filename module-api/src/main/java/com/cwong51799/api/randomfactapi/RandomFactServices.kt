@@ -5,5 +5,5 @@ import retrofit2.http.GET
 
 interface RandomFactServices {
     @GET("random.json?language=en")
-    fun getFact() : Call<Fact>
+    fun getFact() : Call<FactResponse>
 }
