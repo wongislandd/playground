@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.cwong51799.api.R
 import com.cwong51799.api.api_selection.APISelectorViewModel
 import kotlinx.android.synthetic.main.fragment_poke_api.*
@@ -27,6 +28,7 @@ class PokeAPIFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         viewModel = ViewModelProviders.of(this).get(PokeAPIViewModel::class.java)
+        navController = NavHostFragment.findNavController(this)
         super.onCreate(savedInstanceState)
     }
 
@@ -34,11 +36,10 @@ class PokeAPIFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        querySender.setOnClickListener{
-
-        }
         return inflater.inflate(R.layout.fragment_poke_api, container, false)
     }
+
+
 
     companion object {
         private val TAG = "PokeAPIFragment"
