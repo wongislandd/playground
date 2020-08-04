@@ -14,6 +14,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.cwong51799.api.R
 import com.cwong51799.api.utils.APIUtils
+import kotlinx.android.synthetic.main.trivia_answer_view.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -54,14 +55,12 @@ class TriviaFragment : Fragment() {
         val call = TriviaApi.getAQuestion(1)
 
 
-        if(viewModel.currentQuestion != null) {
+        if(viewModel.currentQuestion.value != null) {
             generateTriviaQuestion(view, viewModel.currentQuestion.value)
         }
-        if(viewModel.selectedAnswer != null) {
+        if(viewModel.selectedAnswer.value != null) {
             triviaLockAnswerBtn.text = "LOCK IN " + viewModel.selectedAnswer.value?.first
             triviaLockAnswerBtn.isEnabled = true
-        } else {
-            triviaLockAnswerBtn.isEnabled = false
         }
 
         viewModel.currentQuestion.observe(viewLifecycleOwner) { currentQuestion ->
@@ -73,6 +72,9 @@ class TriviaFragment : Fragment() {
             triviaLockAnswerBtn.isEnabled = true
         }
 
+        triviaLockAnswerBtn.setOnClickListener {
+            navigateToPostQuestion()
+        }
 
         call.enqueue(object : Callback<TriviaResponse> {
             override fun onFailure(call: Call<TriviaResponse>, t: Throwable) {
@@ -117,6 +119,13 @@ class TriviaFragment : Fragment() {
         }
     }
 
+    fun navigateToPostQuestion() {
+        navController.navigate(R.id.post_question)
+    }
+
+    /**
+     * Deselects all buttons in the option scroll view
+     */
     fun deselectAllButtons() {
         for (view in triviaOptionsLL.children) {
             if (view is TriviaAnswerView) {
@@ -125,6 +134,9 @@ class TriviaFragment : Fragment() {
         }
     }
 
+    /**
+     * Applies formatting since the API returns some weird format for " and '
+     */
     fun formatToHtml(str : String) : String{
         var strCopy : String = str
         var alternator = 0
@@ -137,13 +149,8 @@ class TriviaFragment : Fragment() {
                 alternator = 0
             }
         }
-
-        strCopy.replace("&#39;", "'")
+        strCopy = strCopy.replace("&#39;", "'")
         return strCopy
-    }
-
-    fun isCorrect(answer : Pair<String, Boolean>) : Boolean{
-        return answer.second
     }
 
     companion object {

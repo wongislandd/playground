@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".opentriviadb.PostQuestionFragment">
+
+    <TextView
+        android:id="@+id/answerStatusTV"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/triviaQuestionLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Correct / Incorrect" />
+
+    <TextView
+        android:id="@+id/triviaQuestionLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Trivia Question"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/answerStatusTV" />
+
+    <TextView
+        android:id="@+id/triviaQuestionTV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="340dp"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/triviaQuestionLabel"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="Trivia Question" />
+
+    <TextView
+        android:id="@+id/correctAnswerLabel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="Trivia Answer"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@+id/correctAnswerTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/triviaQuestionTV"
+        app:layout_constraintVertical_bias="0.523" />
+
+    <TextView
+        android:id="@+id/correctAnswerTV"
+        android:layout_width="match_parent"
+        android:layout_height="114dp"
+        android:layout_marginBottom="188dp"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Correct Answer" />
+
+    <TextView
+        android:id="@+id/numCorrectTV"
+        android:layout_width="412dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="4dp"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="@color/correctGreen"
+        app:layout_constraintBottom_toTopOf="@+id/goToNextQuestionBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/correctAnswerTV"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="99" />
+
+    <TextView
+        android:id="@+id/numIncorrectTV"
+        android:layout_width="100dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="212dp"
+        android:layout_marginRight="212dp"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="@color/incorrectRed"
+        app:layout_constraintBottom_toTopOf="@id/goToNextQuestionBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@id/correctAnswerTV"
+        app:layout_constraintTop_toBottomOf="@+id/correctAnswerTV"
+        tools:text="99" />
+
+    <Button
+        android:id="@+id/goToNextQuestionBtn"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="0dp"
+        android:layout_height="132dp"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:text="NEXT QUESTION"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numIncorrectTV" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

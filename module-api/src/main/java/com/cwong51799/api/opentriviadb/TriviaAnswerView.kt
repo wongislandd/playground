@@ -19,7 +19,7 @@ class TriviaAnswerView @JvmOverloads constructor(
 
     init{
         LayoutInflater.from(context).inflate(R.layout.trivia_answer_view,this, true)
-        triviaOptionBtn.text = answerText
+        triviaOptionTV.text = answerText
     }
 
     fun selectAnswer() {
