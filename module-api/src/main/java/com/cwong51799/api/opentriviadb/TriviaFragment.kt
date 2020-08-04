@@ -13,6 +13,7 @@ import androidx.lifecycle.observe
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.cwong51799.api.R
+import com.cwong51799.api.opentriviadb.triviautils.TriviaUtils
 import com.cwong51799.api.utils.APIUtils
 import kotlinx.android.synthetic.main.trivia_answer_view.view.*
 import retrofit2.Call
@@ -31,7 +32,7 @@ class TriviaFragment : Fragment() {
     private lateinit var triviaLockAnswerBtn : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        viewModel = ViewModelProviders.of(this).get(TriviaViewModel::class.java)
+        viewModel = ViewModelProviders.of(requireActivity()).get(TriviaViewModel::class.java)
         navController = NavHostFragment.findNavController(this)
         super.onCreate(savedInstanceState)
     }
@@ -94,7 +95,7 @@ class TriviaFragment : Fragment() {
     fun generateTriviaQuestion(view : View, result : TriviaResult?) {
         if(result != null) {
             triviaQuestionTV.text = HtmlCompat.fromHtml(
-                formatToHtml(result.question),
+                TriviaUtils.formatToHtml(result.question),
                 HtmlCompat.FROM_HTML_MODE_LEGACY
             )
             val possibleAnswers = mutableListOf<Pair<String, Boolean>>()
@@ -132,25 +133,6 @@ class TriviaFragment : Fragment() {
                 view.deselectAnswer()
             }
         }
-    }
-
-    /**
-     * Applies formatting since the API returns some weird format for " and '
-     */
-    fun formatToHtml(str : String) : String{
-        var strCopy : String = str
-        var alternator = 0
-        while(strCopy.contains("&quot;")){
-            if (alternator == 0){
-                strCopy = strCopy.replaceFirst("&quot;", "<b>")
-                alternator = 1
-            } else {
-                strCopy = strCopy.replaceFirst("&quot;", "</b>")
-                alternator = 0
-            }
-        }
-        strCopy = strCopy.replace("&#39;", "'")
-        return strCopy
     }
 
     companion object {

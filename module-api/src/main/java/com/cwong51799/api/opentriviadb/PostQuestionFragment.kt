@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.cwong51799.api.R
+import com.cwong51799.api.opentriviadb.triviautils.TriviaUtils
 
 class PostQuestionFragment  : Fragment() {
     private lateinit var viewModel: TriviaViewModel
@@ -17,7 +18,7 @@ class PostQuestionFragment  : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        viewModel = ViewModelProviders.of(this).get(TriviaViewModel::class.java)
+        viewModel = ViewModelProviders.of(requireActivity()).get(TriviaViewModel::class.java)
         navController = NavHostFragment.findNavController(this)
         super.onCreate(savedInstanceState)
     }
@@ -51,7 +52,7 @@ class PostQuestionFragment  : Fragment() {
 
     fun setTriviaQuestion(view : View) {
         val triviaQuestionTV = view.findViewById<TextView>(R.id.triviaQuestionTV)
-        triviaQuestionTV.text = viewModel.currentQuestion.value?.question
+        triviaQuestionTV.text = TriviaUtils.formatToHtml(viewModel.currentQuestion.value?.question ?: "")
     }
 
     fun setCorrectAnswer(view : View) {
