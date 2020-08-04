@@ -54,13 +54,13 @@
         tools:text="Trivia Question" />
 
     <TextView
-        android:id="@+id/correctAnswerLabel"
+        android:id="@+id/triviaAnswerLabel"
         android:layout_width="188dp"
         android:layout_height="35dp"
         android:gravity="center"
         android:text="Trivia Answer"
         android:textSize="28sp"
-        app:layout_constraintBottom_toTopOf="@+id/correctAnswerTV"
+        app:layout_constraintBottom_toTopOf="@+id/triviaAnswerTV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +68,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/correctAnswerTV"
+        android:id="@+id/triviaAnswerTV"
         android:layout_width="374dp"
         android:layout_height="114dp"
         android:autoSizeMaxTextSize="100sp"
@@ -97,7 +97,7 @@
         android:gravity="center"
         android:text="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/correctAnswerTV"
+        app:layout_constraintTop_toBottomOf="@+id/triviaAnswerTV"
         tools:text="99" />
 
     <TextView
@@ -113,7 +113,7 @@
         android:gravity="center"
         android:text="0"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/correctAnswerTV"
+        app:layout_constraintTop_toBottomOf="@+id/triviaAnswerTV"
         tools:text="99" />
 
 
