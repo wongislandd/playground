@@ -57,7 +57,7 @@ class PostQuestionFragment  : Fragment() {
 
     fun setCorrectAnswer(view : View) {
         val correctAnswerTV = view.findViewById<TextView>(R.id.triviaAnswerTV)
-        correctAnswerTV.text = viewModel.selectedAnswer.value?.first
+        correctAnswerTV.text = TriviaUtils.formatToHtml(viewModel.selectedAnswer.value?.first ?: "")
     }
 
     fun setScore(view : View){
