@@ -17,7 +17,7 @@ object TriviaUtils {
                 alternator = 0
             }
         }
-        strCopy = strCopy.replace("&#39;", "'")
+        strCopy = strCopy.replace("&#039;", "'")
         return strCopy
     }
 }

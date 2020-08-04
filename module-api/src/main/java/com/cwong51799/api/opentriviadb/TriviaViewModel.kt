@@ -15,6 +15,10 @@ class TriviaViewModel : ViewModel()  {
         return selectedAnswer.value?.second ?: false
     }
 
+    fun resetQuestion() {
+        currentQuestion.value = null
+        selectedAnswer.value = null
+    }
 
 
 }

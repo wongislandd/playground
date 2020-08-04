@@ -1,5 +1,6 @@
 package com.cwong51799.api.opentriviadb
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -50,27 +51,24 @@ class TriviaFragment : Fragment() {
         triviaOptionsLL = view.findViewById(R.id.triviaOptionLL)
         triviaLockAnswerBtn = view.findViewById(R.id.triviaLockAnswerBtn)
 
+
         val retrofit = Retrofit.Builder().baseUrl(APIUtils.TRIVIA_API_BASE_URL).addConverterFactory(
             MoshiConverterFactory.create()).build()
         val TriviaApi = retrofit.create(TriviaServices::class.java)
         val call = TriviaApi.getAQuestion(1)
 
 
-        if(viewModel.currentQuestion.value != null) {
-            generateTriviaQuestion(view, viewModel.currentQuestion.value)
-        }
-        if(viewModel.selectedAnswer.value != null) {
-            triviaLockAnswerBtn.text = "LOCK IN " + viewModel.selectedAnswer.value?.first
-            triviaLockAnswerBtn.isEnabled = true
-        }
-
         viewModel.currentQuestion.observe(viewLifecycleOwner) { currentQuestion ->
-            generateTriviaQuestion(view, currentQuestion)
+            if(currentQuestion != null) {
+                generateTriviaQuestion(view, currentQuestion)
+            }
         }
 
         viewModel.selectedAnswer.observe(viewLifecycleOwner) {selectedAnswer ->
-            triviaLockAnswerBtn.text = "LOCK IN " + selectedAnswer.first
-            triviaLockAnswerBtn.isEnabled = true
+            if(selectedAnswer != null) {
+                triviaLockAnswerBtn.text = "LOCK IN " + selectedAnswer.first
+                triviaLockAnswerBtn.isEnabled = true
+            }
         }
 
         triviaLockAnswerBtn.setOnClickListener {
@@ -89,11 +87,13 @@ class TriviaFragment : Fragment() {
                 viewModel.currentQuestion.value = response.body()?.results?.first()
             }
         })
+
         super.onViewCreated(view, savedInstanceState)
     }
 
     fun generateTriviaQuestion(view : View, result : TriviaResult?) {
         if(result != null) {
+            triviaOptionsLL.removeAllViews()
             triviaQuestionTV.text = HtmlCompat.fromHtml(
                 TriviaUtils.formatToHtml(result.question),
                 HtmlCompat.FROM_HTML_MODE_LEGACY

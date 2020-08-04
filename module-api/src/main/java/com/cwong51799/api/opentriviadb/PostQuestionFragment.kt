@@ -1,11 +1,15 @@
 package com.cwong51799.api.opentriviadb
 
 import android.os.Bundle
+import android.text.Html
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import androidx.core.text.HtmlCompat
+import androidx.core.view.ViewCompat
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -36,6 +40,10 @@ class PostQuestionFragment  : Fragment() {
         setTriviaQuestion(view)
         setCorrectAnswer(view)
         setScore(view)
+        view.findViewById<Button>(R.id.goToNextQuestionBtn).setOnClickListener{
+            viewModel.resetQuestion()
+            navController.navigate(R.id.triviaAPI)
+        }
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -50,17 +58,24 @@ class PostQuestionFragment  : Fragment() {
         }
     }
 
-    fun setTriviaQuestion(view : View) {
+    fun setTriviaQuestion(view: View) {
         val triviaQuestionTV = view.findViewById<TextView>(R.id.triviaQuestionTV)
-        triviaQuestionTV.text = TriviaUtils.formatToHtml(viewModel.currentQuestion.value?.question ?: "")
+        triviaQuestionTV.text = HtmlCompat.fromHtml(
+            TriviaUtils.formatToHtml(viewModel.currentQuestion.value?.question ?: ""),
+            HtmlCompat.FROM_HTML_MODE_LEGACY
+        )
     }
 
-    fun setCorrectAnswer(view : View) {
+    fun setCorrectAnswer(view: View) {
         val correctAnswerTV = view.findViewById<TextView>(R.id.triviaAnswerTV)
-        correctAnswerTV.text = TriviaUtils.formatToHtml(viewModel.selectedAnswer.value?.first ?: "")
+        correctAnswerTV.text = HtmlCompat.fromHtml(
+            TriviaUtils.formatToHtml(
+                viewModel.currentQuestion.value?.correct_answer ?: ""
+            ), HtmlCompat.FROM_HTML_MODE_LEGACY
+        )
     }
 
-    fun setScore(view : View){
+    fun setScore(view: View) {
         val numCorrectTV = view.findViewById<TextView>(R.id.numCorrectTV)
         val numIncorrectTV = view.findViewById<TextView>(R.id.numIncorrectTV)
         numCorrectTV.text = viewModel.numCorrect.toString()
