@@ -21,4 +21,12 @@ class TriviaAnswerView @JvmOverloads constructor(
         LayoutInflater.from(context).inflate(R.layout.trivia_answer_view,this, true)
         triviaOptionBtn.text = answerText
     }
+
+    fun selectAnswer() {
+        triviaOptionParentView.setBackgroundResource(R.color.colorPrimary)
+    }
+
+    fun deselectAnswer() {
+        triviaOptionParentView.setBackgroundResource(0)
+    }
 }

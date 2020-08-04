@@ -3,7 +3,7 @@ package com.cwong51799.api.opentriviadb
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class TriviaResponse(val response_code : Int, val triviaResults : List<TriviaResult>)
+data class TriviaResponse(val response_code : Int, val results : List<TriviaResult>)
 
 
 @JsonClass(generateAdapter = true)

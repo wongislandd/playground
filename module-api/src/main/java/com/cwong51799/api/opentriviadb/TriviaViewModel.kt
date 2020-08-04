@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 
 class TriviaViewModel : ViewModel()  {
     val currentQuestion = MutableLiveData<TriviaResult>()
+    val selectedAnswer = MutableLiveData<Pair<String, Boolean>>()
 
 
 

@@ -4,21 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ScrollView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.core.text.HtmlCompat
+import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.cwong51799.api.R
-import com.cwong51799.api.api_selection.APIOptionView
-import com.cwong51799.api.randomfactapi.RandomFactFragment
-import com.cwong51799.api.randomfactapi.RandomFactServices
 import com.cwong51799.api.utils.APIUtils
-import kotlinx.android.synthetic.main.fragment_trivia_api.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,6 +26,8 @@ class TriviaFragment : Fragment() {
     private lateinit var navController : NavController
     private lateinit var triviaQuestionTV : TextView
     private lateinit var triviaOptionsTV : ScrollView
+    private lateinit var triviaOptionsLL : LinearLayout
+    private lateinit var triviaLockAnswerBtn : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         viewModel = ViewModelProviders.of(this).get(TriviaViewModel::class.java)
@@ -46,18 +43,36 @@ class TriviaFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        triviaQuestionTV = view.findViewById<TextView>(R.id.triviaQuestionTV)
-        triviaOptionsTV = view.findViewById<ScrollView>(R.id.triviaOptionsSV)
-
-        viewModel.currentQuestion.observe(viewLifecycleOwner) { triviaResult ->
-            generateTriviaQuestion(view, triviaResult)
-        }
-
+        triviaQuestionTV = view.findViewById(R.id.triviaQuestionTV)
+        triviaOptionsTV = view.findViewById(R.id.triviaOptionsSV)
+        triviaOptionsLL = view.findViewById(R.id.triviaOptionLL)
+        triviaLockAnswerBtn = view.findViewById(R.id.triviaLockAnswerBtn)
 
         val retrofit = Retrofit.Builder().baseUrl(APIUtils.TRIVIA_API_BASE_URL).addConverterFactory(
             MoshiConverterFactory.create()).build()
         val TriviaApi = retrofit.create(TriviaServices::class.java)
         val call = TriviaApi.getAQuestion(1)
+
+
+        if(viewModel.currentQuestion != null) {
+            generateTriviaQuestion(view, viewModel.currentQuestion.value)
+        }
+        if(viewModel.selectedAnswer != null) {
+            triviaLockAnswerBtn.text = "LOCK IN " + viewModel.selectedAnswer.value?.first
+            triviaLockAnswerBtn.isEnabled = true
+        } else {
+            triviaLockAnswerBtn.isEnabled = false
+        }
+
+        viewModel.currentQuestion.observe(viewLifecycleOwner) { currentQuestion ->
+            generateTriviaQuestion(view, currentQuestion)
+        }
+
+        viewModel.selectedAnswer.observe(viewLifecycleOwner) {selectedAnswer ->
+            triviaLockAnswerBtn.text = "LOCK IN " + selectedAnswer.first
+            triviaLockAnswerBtn.isEnabled = true
+        }
+
 
         call.enqueue(object : Callback<TriviaResponse> {
             override fun onFailure(call: Call<TriviaResponse>, t: Throwable) {
@@ -68,35 +83,63 @@ class TriviaFragment : Fragment() {
                 call: Call<TriviaResponse>,
                 response: Response<TriviaResponse>
             ) {
-                viewModel.currentQuestion.value = response.body()?.triviaResults?.first()
+                viewModel.currentQuestion.value = response.body()?.results?.first()
             }
         })
         super.onViewCreated(view, savedInstanceState)
     }
 
-    fun generateTriviaQuestion(view : View, result : TriviaResult) {
-        triviaQuestionTV.text = result.question
-        val possibleAnswers = mutableListOf<Pair<String, Boolean>>()
-        result.incorrect_answers.forEach {
-            possibleAnswers.add(Pair(it, false))
-        }
-        possibleAnswers.add(Pair(result.correct_answer,true))
-        possibleAnswers.shuffle()
-        for (answer in possibleAnswers) {
-            val newOptionView = TriviaAnswerView(
-                answerText = answer.first,
-                correct = answer.second,
-                context = view.context
+    fun generateTriviaQuestion(view : View, result : TriviaResult?) {
+        if(result != null) {
+            triviaQuestionTV.text = HtmlCompat.fromHtml(
+                formatToHtml(result.question),
+                HtmlCompat.FROM_HTML_MODE_LEGACY
             )
-            newOptionView.setOnClickListener {
-                if(isCorrect(answer)) {
-                    // go to correct page
-                } else {
-                    // go to incorrect page
+            val possibleAnswers = mutableListOf<Pair<String, Boolean>>()
+            result.incorrect_answers.forEach {
+                possibleAnswers.add(Pair(it, false))
+            }
+            possibleAnswers.add(Pair(result.correct_answer, true))
+            possibleAnswers.shuffle()
+            for (answer in possibleAnswers) {
+                val newOptionView = TriviaAnswerView(
+                    answerText = answer.first,
+                    correct = answer.second,
+                    context = view.context
+                )
+                newOptionView.setOnClickListener {
+                    deselectAllButtons()
+                    newOptionView.selectAnswer()
+                    viewModel.selectedAnswer.value = answer
                 }
+                triviaOptionsLL.addView(newOptionView)
+            }
+        }
+    }
+
+    fun deselectAllButtons() {
+        for (view in triviaOptionsLL.children) {
+            if (view is TriviaAnswerView) {
+                view.deselectAnswer()
+            }
+        }
+    }
+
+    fun formatToHtml(str : String) : String{
+        var strCopy : String = str
+        var alternator = 0
+        while(strCopy.contains("&quot;")){
+            if (alternator == 0){
+                strCopy = strCopy.replaceFirst("&quot;", "<b>")
+                alternator = 1
+            } else {
+                strCopy = strCopy.replaceFirst("&quot;", "</b>")
+                alternator = 0
             }
         }
 
+        strCopy.replace("&#39;", "'")
+        return strCopy
     }
 
     fun isCorrect(answer : Pair<String, Boolean>) : Boolean{
