@@ -1,4 +1,4 @@
-package com.cwong51799.api.opentriviadb
+package com.cwong51799.api.opentriviadb.network
 
 import com.squareup.moshi.JsonClass
 

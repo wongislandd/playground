@@ -21,8 +21,8 @@
             android:id="@+id/action_APISelector_to_randomFact"
             app:destination="@id/randomFactAPI" />
         <action
-            android:id="@+id/action_APISelector_to_triviaAPI"
-            app:destination="@id/triviaAPI" />
+            android:id="@+id/action_APISelector_to_triviaOptionsFragment"
+            app:destination="@id/triviaOptionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/pokeAPI"
@@ -41,7 +41,12 @@
         tools:layout="@layout/fragment_trivia_api">
         <action
             android:id="@+id/action_triviaAPI_to_post_question"
-            app:destination="@id/post_question" />
+            app:destination="@id/post_question"
+            app:enterAnim="@anim/nav_slide_in"
+            app:exitAnim="@anim/nav_slide_in"
+            app:popEnterAnim="@anim/nav_slide_in"
+            app:popExitAnim="@anim/nav_slide_in"
+            app:popUpTo="@id/APISelector" />
     </fragment>
     <fragment
         android:id="@+id/post_question"
@@ -50,6 +55,16 @@
         tools:layout="@layout/fragment_post_question">
         <action
             android:id="@+id/action_post_question_to_triviaAPI"
+            app:destination="@id/triviaAPI"
+            app:popUpTo="@id/APISelector" />
+    </fragment>
+    <fragment
+        android:id="@+id/triviaOptionsFragment"
+        android:name="com.cwong51799.api.opentriviadb.TriviaOptionsFragment"
+        android:label="fragment_trivia_options"
+        tools:layout="@layout/fragment_trivia_options" >
+        <action
+            android:id="@+id/action_triviaOptionsFragment_to_triviaAPI"
             app:destination="@id/triviaAPI" />
     </fragment>
 </navigation>

@@ -1,4 +1,4 @@
-package com.cwong51799.api.opentriviadb
+package com.cwong51799.api.opentriviadb.network
 
 import retrofit2.Call
 import retrofit2.http.GET

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="standardTextSize">36sp</dimen>
+    <dimen name="standardLabelSize">40sp</dimen>
 </resources>

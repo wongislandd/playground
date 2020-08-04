@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25">
+
+        <TextView
+            android:id="@+id/numberQuestionsSelectorLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number of Questions"
+            android:textSize="@dimen/standardLabelSize" />
+
+        <EditText
+            android:id="@+id/numberQuestionsEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:ems="10"
+            android:inputType="number" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25">
+
+        <TextView
+            android:id="@+id/categorySelectorLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:textSize="@dimen/standardLabelSize" />
+
+        <Spinner
+            android:id="@+id/categorySelectorSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:entries="@array/trivia_categories" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25">
+
+        <TextView
+            android:id="@+id/difficultySelectorLabelTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Difficulty"
+            android:textSize="@dimen/standardLabelSize" />
+
+        <Spinner
+            android:id="@+id/difficultySelectorSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:entries="@array/trivia_difficulties" />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3">
+
+        <Button
+            android:id="@+id/beginTriviaBtn"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:text="Begin Trivia" />
+    </RelativeLayout>
+</LinearLayout>

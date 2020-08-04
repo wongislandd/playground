@@ -1,5 +1,6 @@
 package com.cwong51799.api.opentriviadb
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Html
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.core.view.ViewCompat
 import androidx.lifecycle.ViewModelProviders
@@ -31,7 +33,6 @@ class PostQuestionFragment  : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_post_question, container, false)
     }
 
@@ -42,37 +43,33 @@ class PostQuestionFragment  : Fragment() {
         setScore(view)
         view.findViewById<Button>(R.id.goToNextQuestionBtn).setOnClickListener{
             viewModel.resetQuestion()
-            navController.navigate(R.id.triviaAPI)
+            navController.navigate(R.id.triviaAPI, null, TriviaUtils.triviaNavOptions)
         }
         super.onViewCreated(view, savedInstanceState)
     }
 
-    fun setAnswerStatus(view : View){
+    private fun setAnswerStatus(view : View){
         val answerStatusTV = view.findViewById<TextView>(R.id.answerStatusTV)
         if(viewModel.isSelectedAnswerCorrect()){
             answerStatusTV.text = "CORRECT"
+            answerStatusTV.setTextColor(ContextCompat.getColor(view.context, R.color.correctGreen))
             viewModel.numCorrect++
         } else {
             answerStatusTV.text = "INCORRECT"
+            answerStatusTV.setTextColor(ContextCompat.getColor(view.context, R.color.incorrectRed))
             viewModel.numIncorrect++
         }
     }
 
-    fun setTriviaQuestion(view: View) {
+    private fun setTriviaQuestion(view: View) {
         val triviaQuestionTV = view.findViewById<TextView>(R.id.triviaQuestionTV)
-        triviaQuestionTV.text = HtmlCompat.fromHtml(
-            TriviaUtils.formatToHtml(viewModel.currentQuestion.value?.question ?: ""),
-            HtmlCompat.FROM_HTML_MODE_LEGACY
-        )
+        triviaQuestionTV.text = TriviaUtils.getFormattedHtmlFromString(viewModel.currentQuestion.value?.question ?: "")
     }
 
-    fun setCorrectAnswer(view: View) {
+    private fun setCorrectAnswer(view: View) {
         val correctAnswerTV = view.findViewById<TextView>(R.id.triviaAnswerTV)
-        correctAnswerTV.text = HtmlCompat.fromHtml(
-            TriviaUtils.formatToHtml(
-                viewModel.currentQuestion.value?.correct_answer ?: ""
-            ), HtmlCompat.FROM_HTML_MODE_LEGACY
-        )
+        correctAnswerTV.text = TriviaUtils.getFormattedHtmlFromString(viewModel.currentQuestion.value?.correct_answer ?: "")
+
     }
 
     fun setScore(view: View) {

@@ -1,4 +1,4 @@
-package com.cwong51799.api.opentriviadb
+package com.cwong51799.api.opentriviadb.triviautils
 
 import android.content.Context
 import android.util.AttributeSet
@@ -21,10 +21,7 @@ class TriviaAnswerView @JvmOverloads constructor(
 
     init{
         LayoutInflater.from(context).inflate(R.layout.trivia_answer_view,this, true)
-        triviaOptionTV.text = HtmlCompat.fromHtml(
-            TriviaUtils.formatToHtml(answerText),
-            HtmlCompat.FROM_HTML_MODE_LEGACY
-        )
+        triviaOptionTV.text = TriviaUtils.getFormattedHtmlFromString(answerText)
     }
 
     fun selectAnswer() {

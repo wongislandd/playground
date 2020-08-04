@@ -17,10 +17,10 @@
         android:autoSizeStepGranularity="2sp"
         android:autoSizeTextType="uniform"
         android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@id/triviaQuestionLabel"
+        app:layout_constraintBottom_toTopOf="@id/numCorrectTV"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/triviaAnswerTV"
         tools:text="Correct / Incorrect" />
 
     <TextView
@@ -33,10 +33,10 @@
         app:layout_constraintBottom_toTopOf="@+id/triviaQuestionTV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".05"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/answerStatusTV" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/triviaQuestionTV"
@@ -55,6 +55,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="Trivia Question Text"/>
 
+
+
     <TextView
         android:id="@+id/triviaAnswerLabel"
         android:layout_width="match_parent"
@@ -65,9 +67,9 @@
         app:layout_constraintBottom_toTopOf="@+id/triviaAnswerTV"
         app:layout_constraintEnd_toStartOf="@+id/numCorrectTV"
         app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintHeight_percent=".05"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/answerStatusTV" />
+        app:layout_constraintTop_toBottomOf="@id/triviaQuestionTV" />
 
     <TextView
         android:id="@+id/triviaAnswerTV"
@@ -87,6 +89,15 @@
         app:layout_constraintTop_toBottomOf="@id/triviaAnswerLabel"
         tools:text="Trivia Answer Text" />
 
+    <View
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        app:layout_constraintTop_toBottomOf="@id/triviaAnswerTV"
+        app:layout_constraintBottom_toTopOf="@id/answerStatusTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@android:color/darker_gray"/>
     <TextView
         android:id="@+id/numCorrectTV"
         android:layout_width="0dp"
@@ -98,7 +109,7 @@
         android:gravity="center"
         android:text="0"
         android:textColor="@color/correctGreen"
-        app:layout_constraintTop_toBottomOf="@id/triviaAnswerTV"
+        app:layout_constraintTop_toBottomOf="@id/answerStatusTV"
         app:layout_constraintBottom_toTopOf="@id/goToNextQuestionBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/numIncorrectTV"
@@ -124,7 +135,7 @@
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent=".1"
         app:layout_constraintStart_toEndOf="@id/numCorrectTV"
-        app:layout_constraintTop_toBottomOf="@+id/triviaAnswerTV"
+        app:layout_constraintTop_toBottomOf="@+id/answerStatusTV"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent=".5"
         tools:text="99" />
