@@ -13,6 +13,9 @@
     <string name="trivia_answer_label">Answer</string>
     <string name="trivia_question_label">Question</string>
     <string name="select_an_answer">Select an Answer</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="category">Category</string>
+    <string name="default_num_questions">5</string>
 
 
     <string-array name="trivia_categories">
