@@ -1,32 +1,20 @@
 package com.cwong51799.api.opentriviadb
 
 import android.os.Bundle
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.text.HtmlCompat
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
 import androidx.navigation.NavController
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import com.cwong51799.api.R
-import com.cwong51799.api.opentriviadb.network.TriviaServices
 import com.cwong51799.api.opentriviadb.triviautils.TriviaAnswerView
-import com.cwong51799.api.opentriviadb.network.TriviaResponse
-import com.cwong51799.api.opentriviadb.network.TriviaResult
+import com.cwong51799.api.opentriviadb.network.TriviaQuestion
 import com.cwong51799.api.opentriviadb.triviautils.TriviaUtils
-import com.cwong51799.api.utils.APIUtils
-import com.cwong51799.api.utils.APIUtils.TriviaApi
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
 
 
 class TriviaFragment : Fragment() {
@@ -60,48 +48,32 @@ class TriviaFragment : Fragment() {
                 generateTriviaQuestion(view, currentQuestion)
             }
         }
-
         viewModel.selectedAnswer.observe(viewLifecycleOwner) {selectedAnswer ->
             if(selectedAnswer != null) {
                 triviaLockAnswerBtn.text = "LOCK IN " + TriviaUtils.getFormattedHtmlFromString(selectedAnswer.first)
                 triviaLockAnswerBtn.isEnabled = true
             }
         }
-
         triviaLockAnswerBtn.setOnClickListener {
             navigateToPostQuestion()
         }
-
-        val call = TriviaApi.getAQuestion(1)
-        call.enqueue(object : Callback<TriviaResponse> {
-            override fun onFailure(call: Call<TriviaResponse>, t: Throwable) {
-                Toast.makeText(view.context, "Something went wrong!", Toast.LENGTH_LONG)
-            }
-
-            override fun onResponse(
-                call: Call<TriviaResponse>,
-                response: Response<TriviaResponse>
-            ) {
-                viewModel.currentQuestion.value = response.body()?.results?.first()
-            }
-        })
-
+        viewModel.getNextTriviaQuestion()
         super.onViewCreated(view, savedInstanceState)
     }
 
     /**
      * Sets the question and options for the result
      */
-    private fun generateTriviaQuestion(view : View, result : TriviaResult?) {
-        if(result != null) {
+    private fun generateTriviaQuestion(view : View, question : TriviaQuestion?) {
+        if(question != null) {
             triviaOptionsLL.removeAllViews()
             triviaQuestionTV.text =
-                TriviaUtils.getFormattedHtmlFromString(result.question)
+                TriviaUtils.getFormattedHtmlFromString(question.question)
             val possibleAnswers = mutableListOf<Pair<String, Boolean>>()
-            result.incorrect_answers.forEach {
+            question.incorrect_answers.forEach {
                 possibleAnswers.add(Pair(it, false))
             }
-            possibleAnswers.add(Pair(result.correct_answer, true))
+            possibleAnswers.add(Pair(question.correct_answer, true))
             possibleAnswers.shuffle()
             for (answer in possibleAnswers) {
                 val newOptionView =
@@ -124,7 +96,7 @@ class TriviaFragment : Fragment() {
      * Navigates to the post question fragment after selecting an answer
      */
     private fun navigateToPostQuestion() {
-        navController.navigate(R.id.post_question, null, TriviaUtils.triviaNavOptions)
+        navController.navigate(R.id.post_question, null, TriviaUtils.getOptionsWithReturnSetToFragment(R.id.triviaOptionsFragment))
     }
 
     /**

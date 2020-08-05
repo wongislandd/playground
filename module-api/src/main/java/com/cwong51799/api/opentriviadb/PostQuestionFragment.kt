@@ -1,8 +1,6 @@
 package com.cwong51799.api.opentriviadb
 
-import android.graphics.Color
 import android.os.Bundle
-import android.text.Html
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +8,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.text.HtmlCompat
-import androidx.core.view.ViewCompat
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -37,41 +33,63 @@ class PostQuestionFragment  : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        // Set the views
         setAnswerStatus(view)
         setTriviaQuestion(view)
         setCorrectAnswer(view)
         setScore(view)
-        view.findViewById<Button>(R.id.goToNextQuestionBtn).setOnClickListener{
-            viewModel.resetQuestion()
-            navController.navigate(R.id.triviaAPI, null, TriviaUtils.triviaNavOptions)
+        val goNextButton = view.findViewById<Button>(R.id.goToNextQuestionBtn)
+        // Handle the case where there are no more questions left
+        if(viewModel.isGameDone()) {
+            goNextButton.text = getString(R.string.post_game_prompt)
+        }
+        goNextButton.setOnClickListener{
+            if(viewModel.isGameDone()) {
+                navController.navigate(R.id.triviaOptionsFragment, null, TriviaUtils.getOptionsWithReturnSetToFragment(R.id.APISelector))
+            } else {
+                viewModel.resetQuestion()
+                navController.navigate(R.id.triviaMainFragment, null, TriviaUtils.getOptionsWithReturnSetToFragment(R.id.triviaOptionsFragment))
+            }
         }
         super.onViewCreated(view, savedInstanceState)
     }
 
+    /**
+     * Sets INCORRECT / CORRECT status of the answer
+     */
     private fun setAnswerStatus(view : View){
         val answerStatusTV = view.findViewById<TextView>(R.id.answerStatusTV)
         if(viewModel.isSelectedAnswerCorrect()){
-            answerStatusTV.text = "CORRECT"
+            answerStatusTV.text = getString(R.string.correct)
             answerStatusTV.setTextColor(ContextCompat.getColor(view.context, R.color.correctGreen))
             viewModel.numCorrect++
         } else {
-            answerStatusTV.text = "INCORRECT"
+            answerStatusTV.text = getString(R.string.incorrect)
             answerStatusTV.setTextColor(ContextCompat.getColor(view.context, R.color.incorrectRed))
             viewModel.numIncorrect++
         }
     }
 
+    /**
+     * Sets the text to remind the user of the most recent question
+     */
     private fun setTriviaQuestion(view: View) {
         val triviaQuestionTV = view.findViewById<TextView>(R.id.triviaQuestionTV)
         triviaQuestionTV.text = TriviaUtils.getFormattedHtmlFromString(viewModel.currentQuestion.value?.question ?: "")
     }
 
+    /**
+     * Sets the text to notify the user of the answer
+     */
     private fun setCorrectAnswer(view: View) {
         val correctAnswerTV = view.findViewById<TextView>(R.id.triviaAnswerTV)
         correctAnswerTV.text = TriviaUtils.getFormattedHtmlFromString(viewModel.currentQuestion.value?.correct_answer ?: "")
 
     }
 
+    /**
+     * Sets the score
+     */
     fun setScore(view: View) {
         val numCorrectTV = view.findViewById<TextView>(R.id.numCorrectTV)
         val numIncorrectTV = view.findViewById<TextView>(R.id.numIncorrectTV)
