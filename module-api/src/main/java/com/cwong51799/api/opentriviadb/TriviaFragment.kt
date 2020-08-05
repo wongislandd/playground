@@ -24,6 +24,7 @@ class TriviaFragment : Fragment() {
     private lateinit var triviaOptionsTV : ScrollView
     private lateinit var triviaOptionsLL : LinearLayout
     private lateinit var triviaLockAnswerBtn : Button
+    private lateinit var triviaProgressBar : ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         viewModel = ViewModelProviders.of(requireActivity()).get(TriviaViewModel::class.java)
@@ -43,9 +44,13 @@ class TriviaFragment : Fragment() {
         triviaOptionsTV = view.findViewById(R.id.triviaOptionsSV)
         triviaOptionsLL = view.findViewById(R.id.triviaOptionLL)
         triviaLockAnswerBtn = view.findViewById(R.id.triviaLockAnswerBtn)
+        triviaProgressBar = view.findViewById(R.id.triviaLoadProgressBar)
         viewModel.currentQuestion.observe(viewLifecycleOwner) { currentQuestion ->
             if(currentQuestion != null) {
                 generateTriviaQuestion(view, currentQuestion)
+                triviaProgressBar.visibility = View.GONE
+            } else {
+                triviaProgressBar.visibility = View.VISIBLE
             }
         }
         viewModel.selectedAnswer.observe(viewLifecycleOwner) {selectedAnswer ->

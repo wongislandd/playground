@@ -26,14 +26,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Placeholder Trivia Question" />
+
     <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        app:layout_constraintTop_toBottomOf="@id/triviaQuestionTV"
+        android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toTopOf="@id/triviaOptionsSV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@android:color/darker_gray"/>
+        app:layout_constraintTop_toBottomOf="@id/triviaQuestionTV" />
     <ScrollView
         android:id="@+id/triviaOptionsSV"
         android:layout_width="match_parent"
@@ -69,4 +71,14 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/triviaOptionsSV" />
+
+    <ProgressBar
+        android:id="@+id/triviaLoadProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="@+id/triviaQuestionTV"
+        app:layout_constraintEnd_toEndOf="@+id/triviaQuestionTV"
+        app:layout_constraintStart_toStartOf="@+id/triviaQuestionTV"
+        app:layout_constraintTop_toTopOf="@+id/triviaQuestionTV" />
 </androidx.constraintlayout.widget.ConstraintLayout>
