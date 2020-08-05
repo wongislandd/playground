@@ -52,10 +52,10 @@ class APISelectorFragment : Fragment() {
 
     fun goToAPI(api : API) {
         val nextScreen = when(api.name) {
-            APIUtils.POKE_API_NAME -> R.id.pokeAPI
-            APIUtils.RANDOM_FACT_API_NAME -> R.id.randomFactAPI
+            APIUtils.POKE_API_NAME -> R.id.pokeAPIFragment
+            APIUtils.RANDOM_FACT_API_NAME -> R.id.randomFactAPIFragment
             APIUtils.TRIVIA_API_NAME -> R.id.triviaOptionsFragment
-            else -> R.id.pokeAPI
+            else -> R.id.pokeAPIFragment
         }
         navController.navigate(nextScreen)
     }

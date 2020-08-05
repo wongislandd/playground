@@ -38,14 +38,14 @@ class PostQuestionFragment  : Fragment() {
         setTriviaQuestion(view)
         setCorrectAnswer(view)
         setScore(view)
-        val goNextButton = view.findViewById<Button>(R.id.goToNextQuestionBtn)
+        val goNextButton = view.findViewById<Button>(R.id.triviaGoToNextQuestionBtn)
         // Handle the case where there are no more questions left
         if(viewModel.isGameDone()) {
             goNextButton.text = getString(R.string.post_game_prompt)
         }
         goNextButton.setOnClickListener{
             if(viewModel.isGameDone()) {
-                navController.navigate(R.id.triviaOptionsFragment, null, TriviaUtils.getOptionsWithReturnSetToFragment(R.id.APISelector))
+                navController.navigate(R.id.triviaOptionsFragment, null, TriviaUtils.getOptionsWithReturnSetToFragment(R.id.APISelectorFragment))
             } else {
                 viewModel.resetQuestion()
                 navController.navigate(R.id.triviaMainFragment, null, TriviaUtils.getOptionsWithReturnSetToFragment(R.id.triviaOptionsFragment))
@@ -58,7 +58,7 @@ class PostQuestionFragment  : Fragment() {
      * Sets INCORRECT / CORRECT status of the answer
      */
     private fun setAnswerStatus(view : View){
-        val answerStatusTV = view.findViewById<TextView>(R.id.answerStatusTV)
+        val answerStatusTV = view.findViewById<TextView>(R.id.triviaAnswerStatusTV)
         if(viewModel.isSelectedAnswerCorrect()){
             answerStatusTV.text = getString(R.string.correct)
             answerStatusTV.setTextColor(ContextCompat.getColor(view.context, R.color.correctGreen))
@@ -91,8 +91,8 @@ class PostQuestionFragment  : Fragment() {
      * Sets the score
      */
     fun setScore(view: View) {
-        val numCorrectTV = view.findViewById<TextView>(R.id.numCorrectTV)
-        val numIncorrectTV = view.findViewById<TextView>(R.id.numIncorrectTV)
+        val numCorrectTV = view.findViewById<TextView>(R.id.triviaNumCorrectTV)
+        val numIncorrectTV = view.findViewById<TextView>(R.id.triviaNumIncorrectTV)
         numCorrectTV.text = viewModel.numCorrect.toString()
         numIncorrectTV.text = viewModel.numIncorrect.toString()
     }

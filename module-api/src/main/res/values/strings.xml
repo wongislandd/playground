@@ -7,9 +7,11 @@
     <string name="post_game_prompt">Return to Home</string>
     <string name="correct">CORRECT</string>
     <string name="incorrect">INCORRECT</string>
-
-
-
+    <string name="next_question">Next Question</string>
+    <string name="zero">0</string>
+    <string name="trivia_answer_label">Answer</string>
+    <string name="trivia_question_label">Question</string>
+    <string name="select_an_answer">Select an Answer</string>
 
 
     <string-array name="trivia_categories">

@@ -101,7 +101,7 @@ class TriviaFragment : Fragment() {
      * Navigates to the post question fragment after selecting an answer
      */
     private fun navigateToPostQuestion() {
-        navController.navigate(R.id.post_question, null, TriviaUtils.getOptionsWithReturnSetToFragment(R.id.triviaOptionsFragment))
+        navController.navigate(R.id.postQuestionFragment, null, TriviaUtils.getOptionsWithReturnSetToFragment(R.id.triviaOptionsFragment))
     }
 
     /**
