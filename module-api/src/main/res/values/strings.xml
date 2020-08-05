@@ -1,3 +1,47 @@
 <resources>
-    <string name="app_name">API</string>
+    <string name="api_tester_title">API Tester</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fact_api_credit">Powered by https://uselessfacts.jsph.pl/</string>
+    <string name="new_fact">New Fact</string>
+    <string name="post_game_prompt">Return to Home</string>
+    <string name="correct">CORRECT</string>
+    <string name="incorrect">INCORRECT</string>
+    <string name="next_question">Next Question</string>
+    <string name="zero">0</string>
+    <string name="trivia_answer_label">Answer</string>
+    <string name="trivia_question_label">Question</string>
+    <string name="select_an_answer">Select an Answer</string>
+
+
+    <string-array name="trivia_categories">
+        <item>General Knowledge</item>
+        <item>Entertainment: Books</item>
+        <item>Entertainment: Film</item>
+        <item>Entertainment: Music</item>
+        <item>Entertainment: Musicals and Theatres</item>
+        <item>Entertainment: Television</item>
+        <item>Entertainment: Video Games</item>
+        <item>Entertainment: Board Games</item>
+        <item>Science and Nature</item>
+        <item>Science: Computers</item>
+        <item>Science: Mathematics</item>
+        <item>Mythology</item>
+        <item>Sports</item>
+        <item>Geography</item>
+        <item>History</item>
+        <item>Politics</item>
+        <item>Art</item>
+        <item>Celebrities</item>
+        <item>Animals</item>
+        <item>Comics</item>
+        <item>Anime and Manga</item>
+        <item>Cartoons and Animations</item>
+    </string-array>
+
+    <string-array name="trivia_difficulties">
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
 </resources>

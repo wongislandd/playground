@@ -7,6 +7,7 @@ class DatabaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTitle(R.string.database_tester_title)
         setContentView(R.layout.activity_database)
     }
 }

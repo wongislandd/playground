@@ -7,6 +7,7 @@ import dagger.android.support.DaggerAppCompatActivity
 class APIActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTitle(R.string.api_tester_title)
         setContentView(R.layout.activity_api)
     }
 }

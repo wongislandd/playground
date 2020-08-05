@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/APISelectorFragment">
+
+    <fragment
+        android:id="@+id/APISelectorFragment"
+        android:name="com.cwong51799.api.api_selection.APISelectorFragment"
+        android:label="selector_fragment"
+        tools:layout="@layout/fragment_selector" >
+        <action
+            android:id="@+id/action_APISelector_to_pokeAPI"
+            app:destination="@id/pokeAPIFragment"
+            app:enterAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/slide_in_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_APISelector_to_randomFact"
+            app:destination="@id/randomFactAPIFragment" />
+        <action
+            android:id="@+id/action_APISelector_to_triviaOptionsFragment"
+            app:destination="@id/triviaOptionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pokeAPIFragment"
+        android:name="com.cwong51799.api.pokeapi.PokeAPIFragment"
+        android:label="fragment_poke_api"
+        tools:layout="@layout/fragment_poke_api" />
+    <fragment
+        android:id="@+id/randomFactAPIFragment"
+        android:name="com.cwong51799.api.randomfactapi.RandomFactFragment"
+        android:label="fragment_random_fact"
+        tools:layout="@layout/fragment_random_fact" />
+    <fragment
+        android:id="@+id/triviaMainFragment"
+        android:name="com.cwong51799.api.opentriviadb.TriviaFragment"
+        android:label="fragment_trivia_api"
+        tools:layout="@layout/fragment_trivia_api">
+        <action
+            android:id="@+id/action_triviaAPI_to_post_question"
+            app:destination="@id/postQuestionFragment"
+            app:enterAnim="@anim/nav_slide_in"
+            app:exitAnim="@anim/nav_slide_in"
+            app:popEnterAnim="@anim/nav_slide_in"
+            app:popExitAnim="@anim/nav_slide_in"
+            app:popUpTo="@id/APISelectorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postQuestionFragment"
+        android:name="com.cwong51799.api.opentriviadb.PostQuestionFragment"
+        android:label="fragment_post_question"
+        tools:layout="@layout/fragment_post_question">
+        <action
+            android:id="@+id/action_post_question_to_triviaAPI"
+            app:destination="@id/triviaMainFragment"
+            app:popUpTo="@id/APISelectorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/triviaOptionsFragment"
+        android:name="com.cwong51799.api.opentriviadb.TriviaOptionsFragment"
+        android:label="fragment_trivia_options"
+        tools:layout="@layout/fragment_trivia_options" >
+        <action
+            android:id="@+id/action_triviaOptionsFragment_to_triviaAPI"
+            app:destination="@id/triviaMainFragment" />
+    </fragment>
+</navigation>

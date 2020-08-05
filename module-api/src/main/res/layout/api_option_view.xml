@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/apiOptionParentView"
+        android:layout_width="match_parent"
+        tools:background="@drawable/opentdb_background"
+        android:layout_height="150dp">
+
+        <TextView
+            android:id="@+id/apiOptionNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:textColor="#533D3D"
+            android:textSize="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/darker_gray"/>
+
+</merge>
