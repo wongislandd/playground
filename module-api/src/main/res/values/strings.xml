@@ -3,6 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="fact_api_credit">Powered by https://uselessfacts.jsph.pl/</string>
+    <string name="trivia_api_credit">Powered by https://https://opentdb.com/</string>
     <string name="new_fact">New Fact</string>
     <string name="post_game_prompt">Return to Home</string>
     <string name="correct">CORRECT</string>
