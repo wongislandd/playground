@@ -43,8 +43,9 @@ class RandomFactFragment : Fragment() {
         val factText = view.findViewById<TextView>(R.id.factTextTV)
         viewModel.currentFact.observe(viewLifecycleOwner) {
             factText.text = it
+            factText.visibility = if (it != emptyResponseBodyStr) View.VISIBLE else View.INVISIBLE
         }
-        val factFinder = view.findViewById<Button>(R.id.factFinderBtn)
+        val factFinder = view.findViewById<Button>(R.id.newFactBtn)
         val retrofit = Retrofit.Builder().baseUrl(APIUtils.RANDOM_FACT_API.baseUrl).addConverterFactory(MoshiConverterFactory.create()).build()
         val FactApi = retrofit.create(RandomFactServices::class.java)
         factFinder.setOnClickListener {
