@@ -1,5 +1,5 @@
 # playground
-This app is my playground. The intention is to be able to use a strong, simple, and modular foundation to test out any sort of technologies / libraries.
+This app is my playground. The intention is to be able to use a strong, simple, and modular foundation to test out any sort of design patterns/technologies/libraries.
 I'll use this app to hone my skills, and maybe make something cool in the process.
 
 
