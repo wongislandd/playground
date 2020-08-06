@@ -17,6 +17,10 @@
             android:layout_height="0dp"
             android:layout_weight=".05"
             android:layout_marginTop="4dp"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
             android:gravity="center"
             android:text="@string/trivia_question_label"
             android:textSize="28sp" />
@@ -39,6 +43,10 @@
             android:layout_height="0dp"
             android:layout_weight=".05"
             android:layout_marginTop="50dp"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
             android:gravity="center"
             android:text="@string/trivia_answer_label"
             android:textSize="28sp" />
