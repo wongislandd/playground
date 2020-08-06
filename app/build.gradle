@@ -36,9 +36,9 @@ kapt {
 
 dependencies {
     // Implement project modules
-    implementation project(path: ':core')
     implementation project(':module-api')
     implementation project(':module-database')
+    implementation project(path: ':core')
     //implementation project(':module-hajime')
 
     def nav_version = "2.3.0"
