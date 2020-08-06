@@ -19,6 +19,7 @@
 
 
     <string-array name="trivia_categories">
+        <item>Any</item>
         <item>General Knowledge</item>
         <item>Entertainment: Books</item>
         <item>Entertainment: Film</item>

@@ -1,4 +1,4 @@
-package com.cwong51799.api.opentriviadb
+package com.cwong51799.api.opentriviadb.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.cwong51799.api.R
+import com.cwong51799.api.opentriviadb.viewmodels.TriviaViewModel
 import com.cwong51799.api.opentriviadb.triviautils.TriviaUtils
 
 class PostQuestionFragment  : Fragment() {

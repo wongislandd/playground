@@ -1,4 +1,4 @@
-package com.cwong51799.api.opentriviadb
+package com.cwong51799.api.opentriviadb.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,16 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.Spinner
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.cwong51799.api.R
+import com.cwong51799.api.opentriviadb.viewmodels.TriviaViewModel
 import com.cwong51799.api.opentriviadb.triviautils.TriviaSettings
 import com.cwong51799.api.opentriviadb.triviautils.TriviaUtils
 import com.cwong51799.core.CustomStepperView
-import java.lang.Integer.parseInt
 
 
 /**

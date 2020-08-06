@@ -36,7 +36,7 @@
         tools:layout="@layout/fragment_random_fact" />
     <fragment
         android:id="@+id/triviaMainFragment"
-        android:name="com.cwong51799.api.opentriviadb.TriviaFragment"
+        android:name="com.cwong51799.api.opentriviadb.fragments.TriviaFragment"
         android:label="fragment_trivia_api"
         tools:layout="@layout/fragment_trivia_api">
         <action
@@ -50,7 +50,7 @@
     </fragment>
     <fragment
         android:id="@+id/postQuestionFragment"
-        android:name="com.cwong51799.api.opentriviadb.PostQuestionFragment"
+        android:name="com.cwong51799.api.opentriviadb.fragments.PostQuestionFragment"
         android:label="fragment_post_question"
         tools:layout="@layout/fragment_post_question">
         <action
@@ -60,7 +60,7 @@
     </fragment>
     <fragment
         android:id="@+id/triviaOptionsFragment"
-        android:name="com.cwong51799.api.opentriviadb.TriviaOptionsFragment"
+        android:name="com.cwong51799.api.opentriviadb.fragments.TriviaOptionsFragment"
         android:label="fragment_trivia_options"
         tools:layout="@layout/fragment_trivia_options" >
         <action
