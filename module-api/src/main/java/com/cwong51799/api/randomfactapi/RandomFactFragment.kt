@@ -45,7 +45,7 @@ class RandomFactFragment : Fragment() {
             factText.text = it
         }
         val factFinder = view.findViewById<Button>(R.id.factFinderBtn)
-        val retrofit = Retrofit.Builder().baseUrl(APIUtils.RANDOM_FACT_API_BASE_URL).addConverterFactory(MoshiConverterFactory.create()).build()
+        val retrofit = Retrofit.Builder().baseUrl(APIUtils.RANDOM_FACT_API.baseUrl).addConverterFactory(MoshiConverterFactory.create()).build()
         val FactApi = retrofit.create(RandomFactServices::class.java)
         factFinder.setOnClickListener {
             val call = FactApi.getFact()

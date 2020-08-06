@@ -46,7 +46,7 @@ class TriviaOptionsFragment : Fragment() {
         val numQuestionsSelector = view.findViewById<CustomStepperView>(R.id.questionCountStepper)
         val categorySelector = view.findViewById<Spinner>(R.id.categorySelectorSpinner)
         val difficultySelector = view.findViewById<Spinner>(R.id.difficultySelectorSpinner)
-        val startTriviaBtn = view.findViewById<Button>(R.id.startTriviaBtn)
+        val startTriviaBtn = view.findViewById<Button>(R.id.beginTriviaBtn)
 
         startTriviaBtn.setOnClickListener {
             viewModel.queryTrivia(TriviaSettings(

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cwong51799.api">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.cwong51799.api"
+    tools:replace="android:name"
+    android:name=".api.Api">
 
     <application
         android:allowBackup="true"

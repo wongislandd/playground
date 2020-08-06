@@ -25,7 +25,7 @@ class TriviaViewModel : ViewModel()  {
 
     fun queryTrivia(newTrivia : TriviaSettings){
         triviaSettings = newTrivia
-        val call = APIUtils.TriviaApi.getTrivia(newTrivia.numQuestions, newTrivia.category, newTrivia.difficulty)
+        val call = APIUtils.TriviaServices.getTrivia(newTrivia.numQuestions, newTrivia.category, newTrivia.difficulty)
         call.enqueue(object : Callback<TriviaResponse> {
             override fun onFailure(call: Call<TriviaResponse>, t: Throwable) {
                 // TODO Handle Failure

@@ -12,10 +12,10 @@ data class Module (val name : String, val activityClass : Class<out Any>, val ba
  * Contains the information needed to load each module in ModuleSelectorFragment
  */
 object ModuleUtils {
+    val APIModule = Module("API Tester", APIActivity::class.java, R.drawable.flower_background)
+    val DatabaseModule = Module("Database Tester", DatabaseActivity::class.java, R.drawable.database_background)
     val moduleList = listOf(
-        Module("API Tester", APIActivity::class.java, R.drawable.flower_background),
-        Module("Database Tester", DatabaseActivity::class.java, R.drawable.database_background)
-       // Module("Hajime Module", HajimeActivity::class.java, R.drawable.sparkle_background)
+        APIModule, DatabaseModule
     )
 }
 

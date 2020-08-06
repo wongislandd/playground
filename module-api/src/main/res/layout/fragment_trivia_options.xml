@@ -142,7 +142,7 @@
         android:layout_weight="0.1">
 
         <Button
-            android:id="@+id/startTriviaBtn"
+            android:id="@+id/beginTriviaBtn"
             style="@style/Widget.AppCompat.Button.Colored"
             android:autoSizeMaxTextSize="100sp"
             android:autoSizeMinTextSize="12sp"

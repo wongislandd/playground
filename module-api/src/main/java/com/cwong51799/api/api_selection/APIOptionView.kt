@@ -20,6 +20,8 @@ class APIOptionView @JvmOverloads constructor(
 
     init{
         LayoutInflater.from(context).inflate(R.layout.api_option_view, this, true)
+        // Set Id to the background resource to be found in Espresso tests
+        this.id = associatedApi.backgroundResource
         apiOptionParentView.setBackgroundResource(associatedApi.backgroundResource)
         apiOptionNameTV.visibility = View.GONE
     }

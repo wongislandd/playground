@@ -5,24 +5,23 @@ import com.cwong51799.api.opentriviadb.network.TriviaServices
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-data class API(var name : String, var backgroundResource : Int)
+data class API(var name : String, var baseUrl : String, var backgroundResource : Int, var associatedFragment : Int)
 
 object APIUtils {
-    const val POKE_API_NAME = "PokeAPI"
+    private const val pokeApiBaseUrl = "https://pokeapi.co/"
+    private const val randomFactApiBaseUrl = "https://uselessfacts.jsph.pl/"
+    private const val triviaApiBaseUrl = "https://opentdb.com/"
 
-    const val RANDOM_FACT_API_NAME = "RandomFact"
-    const val RANDOM_FACT_API_BASE_URL = "https://uselessfacts.jsph.pl/"
+    val POKE_API = API("PokeAPI", pokeApiBaseUrl, R.drawable.pokeapi_background, R.id.pokeAPIFragment)
+    val RANDOM_FACT_API = API("RandomFact", randomFactApiBaseUrl, R.drawable.randomfact_background, R.id.randomFactAPIFragment)
+    val TRIVIA_API = API("TriviaApi", triviaApiBaseUrl, R.drawable.opentdb_background, R.id.triviaOptionsFragment)
 
-    const val TRIVIA_API_NAME = "TriviaApi"
-    const val TRIVIA_API_BASE_URL = "https://opentdb.com/"
-
-    // APIs for Adapters
-    val TriviaApi = Retrofit.Builder().baseUrl(TRIVIA_API_BASE_URL).addConverterFactory(
-        MoshiConverterFactory.create()).build().create(TriviaServices::class.java)
+    val TriviaServices = Retrofit.Builder().baseUrl(triviaApiBaseUrl).addConverterFactory(
+    MoshiConverterFactory.create()).build().create(TriviaServices::class.java)
 
     val apiList = listOf(
-        API(POKE_API_NAME, R.drawable.pokeapi_background),
-        API(RANDOM_FACT_API_NAME, R.drawable.randomfact_background),
-        API(TRIVIA_API_NAME, R.drawable.opentdb_background)
+        POKE_API, RANDOM_FACT_API, TRIVIA_API
     )
+
+
 }
