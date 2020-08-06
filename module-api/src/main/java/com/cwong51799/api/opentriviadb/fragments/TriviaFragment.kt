@@ -46,6 +46,7 @@ class TriviaFragment : Fragment() {
         triviaOptionsLL = view.findViewById(R.id.triviaOptionLL)
         triviaLockAnswerBtn = view.findViewById(R.id.triviaLockAnswerBtn)
         triviaProgressBar = view.findViewById(R.id.triviaLoadProgressBar)
+        // Observe changes within the view model and dynamically load the question
         viewModel.currentQuestion.observe(viewLifecycleOwner) { currentQuestion ->
             if(currentQuestion != null) {
                 generateTriviaQuestion(view, currentQuestion)

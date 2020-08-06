@@ -15,6 +15,9 @@ import com.cwong51799.api.utils.API
 import com.cwong51799.api.utils.APIViewModel
 import com.cwong51799.api.utils.APIUtils
 
+/**
+ * The fragment associated with the view where you select an API to enter
+ */
 class APISelectorFragment : Fragment() {
     private lateinit var viewModel: APIViewModel
     private lateinit var navController : NavController

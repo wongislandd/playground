@@ -24,8 +24,8 @@ import com.cwong51799.core.CustomStepperView
  */
 class TriviaOptionsFragment : Fragment() {
 
-    lateinit var viewModel : TriviaViewModel
-    lateinit var navController : NavController
+    private lateinit var viewModel : TriviaViewModel
+    private lateinit var navController : NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         viewModel = ViewModelProviders.of(requireActivity()).get(TriviaViewModel::class.java)
@@ -64,9 +64,5 @@ class TriviaOptionsFragment : Fragment() {
      */
     private fun navigateToTrivia(){
         navController.navigate(R.id.triviaMainFragment)
-    }
-
-    companion object{
-        private const val DEFAULT_NUM_QUESTIONS = 1
     }
 }

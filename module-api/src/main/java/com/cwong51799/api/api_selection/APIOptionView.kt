@@ -12,6 +12,10 @@ import com.cwong51799.api.R
 import com.cwong51799.api.utils.API
 import kotlinx.android.synthetic.main.api_option_view.view.*
 
+
+/**
+ * A custom view representing an API to enter
+ */
 class APIOptionView @JvmOverloads constructor(
     associatedApi : API,
     context : Context,

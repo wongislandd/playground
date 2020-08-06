@@ -15,9 +15,12 @@ import com.cwong51799.api.R
 import com.cwong51799.api.opentriviadb.viewmodels.TriviaViewModel
 import com.cwong51799.api.opentriviadb.triviautils.TriviaUtils
 
-class PostQuestionFragment  : Fragment() {
+/**
+ * The fragment associated with the page displayed after each question is answered
+ */
+class PostQuestionFragment : Fragment() {
     private lateinit var viewModel: TriviaViewModel
-    private lateinit var navController : NavController
+    private lateinit var navController: NavController
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,15 +44,24 @@ class PostQuestionFragment  : Fragment() {
         setScore(view)
         val goNextButton = view.findViewById<Button>(R.id.triviaGoToNextQuestionBtn)
         // Handle the case where there are no more questions left
-        if(viewModel.isGameDone()) {
+        if (viewModel.isGameDone()) {
             goNextButton.text = getString(R.string.post_game_prompt)
         }
-        goNextButton.setOnClickListener{
-            if(viewModel.isGameDone()) {
-                navController.navigate(R.id.triviaOptionsFragment, null, TriviaUtils.getOptionsWithReturnSetToFragment(R.id.APISelectorFragment))
+        // Set conditional onClickListener to the goNextButton
+        goNextButton.setOnClickListener {
+            if (viewModel.isGameDone()) {
+                navController.navigate(
+                    R.id.triviaOptionsFragment,
+                    null,
+                    TriviaUtils.getOptionsWithReturnSetToFragment(R.id.APISelectorFragment)
+                )
             } else {
                 viewModel.resetQuestion()
-                navController.navigate(R.id.triviaMainFragment, null, TriviaUtils.getOptionsWithReturnSetToFragment(R.id.triviaOptionsFragment))
+                navController.navigate(
+                    R.id.triviaMainFragment,
+                    null,
+                    TriviaUtils.getOptionsWithReturnSetToFragment(R.id.triviaOptionsFragment)
+                )
             }
         }
         super.onViewCreated(view, savedInstanceState)
@@ -58,9 +70,9 @@ class PostQuestionFragment  : Fragment() {
     /**
      * Sets INCORRECT / CORRECT status of the answer
      */
-    private fun setAnswerStatus(view : View){
+    private fun setAnswerStatus(view: View) {
         val answerStatusTV = view.findViewById<TextView>(R.id.triviaAnswerStatusTV)
-        if(viewModel.isSelectedAnswerCorrect()){
+        if (viewModel.isSelectedAnswerCorrect()) {
             answerStatusTV.text = getString(R.string.correct)
             answerStatusTV.setTextColor(ContextCompat.getColor(view.context, R.color.correctGreen))
             viewModel.numCorrect++
@@ -76,7 +88,8 @@ class PostQuestionFragment  : Fragment() {
      */
     private fun setTriviaQuestion(view: View) {
         val triviaQuestionTV = view.findViewById<TextView>(R.id.triviaQuestionTV)
-        triviaQuestionTV.text = TriviaUtils.getFormattedHtmlFromString(viewModel.currentQuestion.value?.question ?: "")
+        triviaQuestionTV.text =
+            TriviaUtils.getFormattedHtmlFromString(viewModel.currentQuestion.value?.question ?: "")
     }
 
     /**
@@ -84,7 +97,9 @@ class PostQuestionFragment  : Fragment() {
      */
     private fun setCorrectAnswer(view: View) {
         val correctAnswerTV = view.findViewById<TextView>(R.id.triviaAnswerTV)
-        correctAnswerTV.text = TriviaUtils.getFormattedHtmlFromString(viewModel.currentQuestion.value?.correct_answer ?: "")
+        correctAnswerTV.text = TriviaUtils.getFormattedHtmlFromString(
+            viewModel.currentQuestion.value?.correct_answer ?: ""
+        )
 
     }
 

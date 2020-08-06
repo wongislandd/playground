@@ -13,11 +13,11 @@ import retrofit2.Response
 
 class TriviaViewModel : ViewModel()  {
 
-    var listOfQuestions = MutableLiveData<MutableList<TriviaQuestionWithStatus>>()
+    private var listOfQuestions = MutableLiveData<MutableList<TriviaQuestionWithStatus>>()
     val currentQuestion = MutableLiveData<TriviaQuestion>()
     val selectedAnswer = MutableLiveData<Pair<String, Boolean>>()
 
-    var triviaSettings: TriviaSettings? = null
+    private var triviaSettings: TriviaSettings? = null
 
     var numCorrect = 0
     var numIncorrect = 0
