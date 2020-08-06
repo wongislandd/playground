@@ -17,7 +17,10 @@
         android:fontFamily="serif-monospace"
         android:gravity="center"
         android:textSize="@dimen/standardTextSize"
-
+        android:autoSizeMaxTextSize="50sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
         tools:text="Placeholder Fact" />
 
     <TextView
@@ -27,9 +30,17 @@
         android:layout_weight=".025"
         android:textAlignment="center"
         android:text="@string/fact_api_credit"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
         android:gravity="center_horizontal" />
     <Button
         android:id="@+id/factFinderBtn"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="0dp"

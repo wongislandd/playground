@@ -125,6 +125,10 @@
             android:id="@+id/triviaDatabaseCred"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="@string/trivia_api_credit" />
@@ -140,6 +144,10 @@
         <Button
             android:id="@+id/startTriviaBtn"
             style="@style/Widget.AppCompat.Button.Colored"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Begin Trivia" />
