@@ -9,25 +9,71 @@
         android:layout_height="0dp"
         android:layout_weight="0.25">
 
-        <TextView
-            android:id="@+id/numberQuestionsSelectorLabelTV"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/questionCountStepper"
-            android:layout_alignParentTop="true"
-            android:autoSizeMaxTextSize="100sp"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeStepGranularity="2sp"
-            android:autoSizeTextType="uniform"
-            android:gravity="center"
-            android:text="Questions"
-            android:textSize="@dimen/standardLabelSize"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <com.cwong51799.core.CustomStepperView
-            android:id="@+id/questionCountStepper"
-            android:layout_width="283dp"
-            android:layout_height="88dp"
-            android:layout_centerInParent="true" />
+            <TextView
+                android:id="@+id/numberQuestionsSelectorLabelTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_weight=".3"
+                android:autoSizeMaxTextSize="100sp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeStepGranularity="2sp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center"
+                android:text="Questions"
+                android:textSize="@dimen/standardLabelSize" />
+
+            <com.cwong51799.core.CustomStepperView
+                android:id="@+id/questionCountStepper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".7"
+                android:layout_below="@id/numberQuestionsSelectorLabelTV"
+                android:layout_centerInParent="true" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/categorySelectorLabelTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/categorySelectorSpinner"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_weight=".3"
+                android:autoSizeMaxTextSize="100sp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeStepGranularity="2sp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center"
+                android:text="@string/category"
+                android:textSize="@dimen/standardLabelSize" />
+
+            <Spinner
+                android:id="@+id/categorySelectorSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_weight=".7"
+                android:entries="@array/trivia_categories" />
+        </LinearLayout>
 
 
     </RelativeLayout>
@@ -37,60 +83,36 @@
         android:layout_height="0dp"
         android:layout_weight="0.25">
 
-        <TextView
-            android:id="@+id/categorySelectorLabelTV"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_above="@id/categorySelectorSpinner"
-            android:autoSizeMaxTextSize="100sp"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeStepGranularity="2sp"
-            android:autoSizeTextType="uniform"
-            android:layout_alignParentTop="true"
-            android:gravity="center"
-            android:text="@string/category"
-            android:textSize="@dimen/standardLabelSize" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/categorySelectorSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:entries="@array/trivia_categories" />
+            <TextView
+                android:id="@+id/difficultySelectorLabelTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/difficultySelectorSpinner"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_weight=".3"
+                android:autoSizeMaxTextSize="100sp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeStepGranularity="2sp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center"
+                android:text="@string/difficulty"
+                android:textSize="@dimen/standardLabelSize" />
 
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.25">
-
-        <TextView
-            android:id="@+id/difficultySelectorLabelTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:gravity="center"
-            android:autoSizeMaxTextSize="100sp"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeStepGranularity="2sp"
-            android:autoSizeTextType="uniform"
-            android:layout_above="@id/difficultySelectorSpinner"
-            android:layout_alignParentTop="true"
-            android:text="@string/difficulty"
-            android:textSize="@dimen/standardLabelSize" />
-
-        <Spinner
-            android:id="@+id/difficultySelectorSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:entries="@array/trivia_difficulties" />
-
+            <Spinner
+                android:id="@+id/difficultySelectorSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_weight=".7"
+                android:entries="@array/trivia_difficulties" />
+        </LinearLayout>
 
     </RelativeLayout>
 
@@ -101,12 +123,11 @@
 
         <TextView
             android:id="@+id/triviaDatabaseCred"
-            android:layout_centerInParent="true"
-            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/trivia_api_credit"
-         />
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/trivia_api_credit" />
 
 
     </RelativeLayout>

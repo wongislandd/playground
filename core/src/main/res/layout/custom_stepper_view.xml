@@ -31,15 +31,16 @@
                 android:layout_column="0"
                 android:text="-" />
 
-            <EditText
+            <TextView
                 android:id="@+id/stepperCount"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_row="0"
                 android:layout_column="1"
                 android:gravity="center"
-                android:text="1"
-                android:inputType="number"/>
+                android:text="@string/default_question_count"
+                tools:text="1"
+                android:textSize="@dimen/standardTextSize" />
 
             <Button
                 android:id="@+id/plusStep"
@@ -49,7 +50,6 @@
                 android:layout_row="0"
                 android:layout_column="2"
                 android:text="+" />
-
 
 
         </GridLayout>
