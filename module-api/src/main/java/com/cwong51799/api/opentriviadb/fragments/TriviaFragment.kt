@@ -13,7 +13,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.cwong51799.api.R
 import com.cwong51799.api.opentriviadb.viewmodels.TriviaViewModel
-import com.cwong51799.api.opentriviadb.triviautils.TriviaAnswerView
+import com.cwong51799.api.opentriviadb.triviautils.TriviaOptionView
 import com.cwong51799.api.opentriviadb.network.TriviaQuestion
 import com.cwong51799.api.opentriviadb.triviautils.TriviaUtils
 
@@ -83,7 +83,7 @@ class TriviaFragment : Fragment() {
             possibleAnswers.shuffle()
             for (answer in possibleAnswers) {
                 val newOptionView =
-                    TriviaAnswerView(
+                    TriviaOptionView(
                         answerText = answer.first,
                         correct = answer.second,
                         context = view.context
@@ -110,7 +110,7 @@ class TriviaFragment : Fragment() {
      */
     fun deselectAllButtons() {
         for (view in triviaOptionsLL.children) {
-            if (view is TriviaAnswerView) {
+            if (view is TriviaOptionView) {
                 view.deselectAnswer()
             }
         }
