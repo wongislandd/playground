@@ -3,7 +3,7 @@ package com.cwong51799.playground.dagger
 import com.cwong51799.api.APIActivity
 import com.cwong51799.playground.MainActivity
 import com.cwong51799.database_module.DatabaseActivity
-import com.cwong51799.module_hajime.HajimeActivity
+//import com.cwong51799.module_hajime.HajimeActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -18,6 +18,6 @@ abstract class AppModule {
     @ActivityScope @ContributesAndroidInjector()
     abstract fun contributesDatabaseActivityInjector(): DatabaseActivity
 
-    @ActivityScope @ContributesAndroidInjector()
-    abstract fun contributesHajimeActivityInjector(): HajimeActivity
+//    @ActivityScope @ContributesAndroidInjector()
+//    abstract fun contributesHajimeActivityInjector(): HajimeActivity
 }

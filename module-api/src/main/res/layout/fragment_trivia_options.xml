@@ -11,29 +11,23 @@
 
         <TextView
             android:id="@+id/numberQuestionsSelectorLabelTV"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@id/questionCountStepper"
+            android:layout_alignParentTop="true"
             android:autoSizeMaxTextSize="100sp"
             android:autoSizeMinTextSize="12sp"
             android:autoSizeStepGranularity="2sp"
             android:autoSizeTextType="uniform"
             android:gravity="center"
-            android:layout_above="@id/numberQuestionsEditText"
-            android:layout_alignParentTop="true"
-            android:text="Number of Questions"
-            android:textSize="@dimen/standardLabelSize" />
+            android:text="Questions"
+            android:textSize="@dimen/standardLabelSize"/>
 
-        <EditText
-            android:id="@+id/numberQuestionsEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_centerInParent="true"
-            android:ems="10"
-            android:gravity="center"
-            android:inputType="number"
-            android:text="@string/default_num_questions" />
+        <com.cwong51799.core.CustomStepperView
+            android:id="@+id/questionCountStepper"
+            android:layout_width="283dp"
+            android:layout_height="88dp"
+            android:layout_centerInParent="true" />
 
 
     </RelativeLayout>
@@ -45,8 +39,9 @@
 
         <TextView
             android:id="@+id/categorySelectorLabelTV"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_above="@id/categorySelectorSpinner"
             android:autoSizeMaxTextSize="100sp"
             android:autoSizeMinTextSize="12sp"
@@ -75,8 +70,9 @@
 
         <TextView
             android:id="@+id/difficultySelectorLabelTV"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:gravity="center"
             android:autoSizeMaxTextSize="100sp"
             android:autoSizeMinTextSize="12sp"

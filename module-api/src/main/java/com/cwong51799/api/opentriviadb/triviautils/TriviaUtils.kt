@@ -56,9 +56,11 @@ object TriviaUtils {
             "Art" -> 25
             "Celebrities" -> 26
             "Animals" -> 27
-            "Comics" -> 28
-            "Anime and Manga" -> 29
-            "Cartoons and Animations" -> 30
+            "Vehicles" -> 28
+            "Comics" -> 29
+            "Science: Gadgets" -> 30
+            "Anime and Manga" -> 31
+            "Cartoons and Animations" -> 32
             else -> null
         }
     }

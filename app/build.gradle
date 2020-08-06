@@ -39,7 +39,7 @@ dependencies {
     implementation project(path: ':core')
     implementation project(':module-api')
     implementation project(':module-database')
-    implementation project(':module-hajime')
+    //implementation project(':module-hajime')
 
     def nav_version = "2.3.0"
 

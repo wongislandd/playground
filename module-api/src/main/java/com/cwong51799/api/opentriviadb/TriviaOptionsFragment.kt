@@ -14,6 +14,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.cwong51799.api.R
 import com.cwong51799.api.opentriviadb.triviautils.TriviaSettings
 import com.cwong51799.api.opentriviadb.triviautils.TriviaUtils
+import com.cwong51799.core.CustomStepperView
 import java.lang.Integer.parseInt
 
 
@@ -43,15 +44,14 @@ class TriviaOptionsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel.resetTrivia()
-        val numQuestionsSelector = view.findViewById<EditText>(R.id.numberQuestionsEditText)
+        val numQuestionsSelector = view.findViewById<CustomStepperView>(R.id.questionCountStepper)
         val categorySelector = view.findViewById<Spinner>(R.id.categorySelectorSpinner)
         val difficultySelector = view.findViewById<Spinner>(R.id.difficultySelectorSpinner)
         val startTriviaBtn = view.findViewById<Button>(R.id.startTriviaBtn)
 
         startTriviaBtn.setOnClickListener {
-            val numQuestions = numQuestionsSelector.text.toString()
             viewModel.queryTrivia(TriviaSettings(
-                numQuestions = if (numQuestions.isNotEmpty()) parseInt(numQuestionsSelector.text.toString()) else DEFAULT_NUM_QUESTIONS,
+                numQuestions = numQuestionsSelector.getCount(),
                 category = TriviaUtils.getIndexOfCategory(categorySelector.selectedItem.toString()),
                 difficulty = difficultySelector.selectedItem.toString().toLowerCase()
             ))

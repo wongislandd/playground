@@ -2,7 +2,7 @@ package com.cwong51799.playground.utils
 
 import com.cwong51799.api.APIActivity
 import com.cwong51799.database_module.DatabaseActivity
-import com.cwong51799.module_hajime.HajimeActivity
+//import com.cwong51799.module_hajime.HajimeActivity
 import com.cwong51799.playground.R
 
 data class Module (val name : String, val activityClass : Class<out Any>, val backgroundResource : Int)
