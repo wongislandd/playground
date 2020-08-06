@@ -1,4 +1,3 @@
-include ':module-hajime'
 include ':core'
 include ':module-database'
 include ':module-api'
