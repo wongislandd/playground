@@ -27,7 +27,7 @@
         android:id="@+id/factApiCredit"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".025"
+        android:layout_weight=".03"
         android:textAlignment="center"
         android:text="@string/fact_api_credit"
         android:autoSizeMaxTextSize="100sp"
