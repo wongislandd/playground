@@ -14,11 +14,10 @@ android {
     apply plugin: 'kotlin-kapt'
     defaultConfig {
         applicationId "com.cwong51799.playground"
-        minSdkVersion 19
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
+        minSdkVersion sharedMinSdkVersion
+        targetSdkVersion sharedTargetSdkVersion
+        versionCode sharedVersionCode
+        versionName sharedVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

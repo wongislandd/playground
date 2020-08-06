@@ -1,5 +1,10 @@
 // File for all the extensions and versions
 ext {
+    sharedMinSdkVersion = 16
+    sharedTargetSdkVersion = 30
+    sharedVersionCode = 1
+    sharedVersionName = "1.0"
+
     versions = [
             "dagger"        : "2.28.3",
             "dagger_android": "2.28.3",
