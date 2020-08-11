@@ -1,4 +1,4 @@
-package com.cwong51799.api.randomfactapi
+package com.cwong51799.api.randomfactapi.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

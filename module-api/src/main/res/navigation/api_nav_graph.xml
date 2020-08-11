@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/APISelectorFragment"
-        android:name="com.cwong51799.api.api_selection.APISelectorFragment"
+        android:name="com.cwong51799.api.api_selection.fragments.APISelectorFragment"
         android:label="selector_fragment"
         tools:layout="@layout/fragment_selector" >
         <action
@@ -26,12 +26,12 @@
     </fragment>
     <fragment
         android:id="@+id/pokeAPIFragment"
-        android:name="com.cwong51799.api.pokeapi.PokeAPIFragment"
+        android:name="com.cwong51799.api.pokeapi.fragments.PokeAPIFragment"
         android:label="fragment_poke_api"
         tools:layout="@layout/fragment_poke_api" />
     <fragment
         android:id="@+id/randomFactAPIFragment"
-        android:name="com.cwong51799.api.randomfactapi.RandomFactFragment"
+        android:name="com.cwong51799.api.randomfactapi.fragments.RandomFactFragment"
         android:label="fragment_random_fact"
         tools:layout="@layout/fragment_random_fact" />
     <fragment

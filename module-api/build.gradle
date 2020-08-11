@@ -75,4 +75,7 @@ dependencies {
     implementation material.materialDesign
     implementation androidx.lifecycle_extensions
     implementation androidx.lifecycle_viewmodel
+
+    // Poke API
+    implementation 'me.sargunvohra.lib:pokekotlin:2.3.0'
 }

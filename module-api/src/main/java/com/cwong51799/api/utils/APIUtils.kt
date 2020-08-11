@@ -20,7 +20,7 @@ object APIUtils {
     MoshiConverterFactory.create()).build().create(TriviaServices::class.java)
 
     val apiList = listOf(
-        POKE_API, RANDOM_FACT_API, TRIVIA_API
+        TRIVIA_API, RANDOM_FACT_API, POKE_API
     )
 
 

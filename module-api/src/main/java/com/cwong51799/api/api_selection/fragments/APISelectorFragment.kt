@@ -1,4 +1,4 @@
-package com.cwong51799.api.api_selection
+package com.cwong51799.api.api_selection.fragments
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -11,6 +11,7 @@ import androidx.lifecycle.observe
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.cwong51799.api.R
+import com.cwong51799.api.api_selection.APIOptionView
 import com.cwong51799.api.utils.API
 import com.cwong51799.api.utils.APIViewModel
 import com.cwong51799.api.utils.APIUtils

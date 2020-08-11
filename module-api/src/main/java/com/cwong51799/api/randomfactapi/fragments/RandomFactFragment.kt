@@ -1,4 +1,4 @@
-package com.cwong51799.api.randomfactapi
+package com.cwong51799.api.randomfactapi.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,6 +13,9 @@ import androidx.lifecycle.observe
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.cwong51799.api.R
+import com.cwong51799.api.randomfactapi.viewmodels.RandomFactViewModel
+import com.cwong51799.api.randomfactapi.network.FactResponse
+import com.cwong51799.api.randomfactapi.network.RandomFactServices
 import com.cwong51799.api.utils.APIUtils
 import retrofit2.*
 

@@ -1,4 +1,4 @@
-package com.cwong51799.api.randomfactapi
+package com.cwong51799.api.randomfactapi.network
 
 import com.squareup.moshi.JsonClass
 
