@@ -61,8 +61,12 @@ class PokeAPIFragment : Fragment() {
         viewModel.currentPokemon.observe(viewLifecycleOwner) { pokemon ->
             generatePokemonInformation(pokemon)
         }
+        // Reset on click
+        pokemonIDSelector.setOnClickListener {
+            pokemonIDSelector.setText("")
+        }
         pokemonSearchBtn.setOnClickListener {
-            if (isValidId(pokemonIDSelector.text.toString())) {
+            if (!pokemonIDSelector.text.isEmpty() && isValidId(pokemonIDSelector.text.toString())) {
                 searchAPokemon(Integer.parseInt(pokemonIDSelector.text.toString()))
             } else {
                 pokemonNameTV.text = POKEMON_ERROR_MSG
