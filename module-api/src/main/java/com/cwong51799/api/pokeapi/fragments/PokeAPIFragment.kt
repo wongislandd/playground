@@ -70,7 +70,7 @@ class PokeAPIFragment : Fragment() {
                 searchAPokemon(Integer.parseInt(pokemonIDSelector.text.toString()))
             } else {
                 pokemonNameTV.text = POKEMON_ERROR_MSG
-                pokemonIDSelector.setText("1")
+                pokemonIDSelector.setText("")
             }
         }
         super.onViewCreated(view, savedInstanceState)
