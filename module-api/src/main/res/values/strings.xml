@@ -16,6 +16,7 @@
     <string name="difficulty">Difficulty</string>
     <string name="category">Category</string>
     <string name="default_num_questions">5</string>
+    <string name="search_poke_id">Search Pokedex ID</string>
 
 
     <string-array name="trivia_categories">

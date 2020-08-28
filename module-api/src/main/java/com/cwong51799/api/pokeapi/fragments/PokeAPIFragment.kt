@@ -96,8 +96,9 @@ class PokeAPIFragment : Fragment() {
 
     companion object {
         private val TAG = "PokeAPIFragment"
-        private val POKEMON_ERROR_MSG = "Error finding Pokemon data. Valid IDs range from 1-893."
         private val MAX_POKEMON_ID = 893
         private val MIN_POKEMON_ID = 1
+        private val POKEMON_ERROR_MSG = "Error finding Pokemon data. Valid IDs range from $MIN_POKEMON_ID - $MAX_POKEMON_ID"
+
     }
 }
