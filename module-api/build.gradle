@@ -76,6 +76,11 @@ dependencies {
     implementation androidx.lifecycle_extensions
     implementation androidx.lifecycle_viewmodel
 
+
+
     // Poke API
     implementation 'me.sargunvohra.lib:pokekotlin:2.3.0'
+    implementation "com.github.bumptech.glide:recyclerview-integration:4.11.0"
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 }

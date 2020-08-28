@@ -16,6 +16,7 @@ android {
         applicationId "com.cwong51799.playground"
         minSdkVersion sharedMinSdkVersion
         targetSdkVersion sharedTargetSdkVersion
+        multiDexEnabled true
         versionCode sharedVersionCode
         versionName sharedVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
