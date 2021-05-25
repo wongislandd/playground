@@ -45,6 +45,7 @@ dependencies {
     implementation androidx.constraintLayout
     androidTestImplementation androidx.junit
     androidTestImplementation androidx.espresso
+    androidTestImplementation androidx.testrunner
     androidTestImplementation androidTest.support_test_rules
     androidTestImplementation androidTest.support_test_runner
     testImplementation test.junit

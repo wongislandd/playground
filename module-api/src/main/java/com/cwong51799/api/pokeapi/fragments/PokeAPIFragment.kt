@@ -2,11 +2,13 @@ package com.cwong51799.api.pokeapi.fragments
 
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.view.get
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -20,6 +22,7 @@ import kotlinx.coroutines.launch
 import me.sargunvohra.lib.pokekotlin.client.PokeApiClient
 import androidx.lifecycle.observe
 import com.bumptech.glide.Glide
+import com.cwong51799.core.CustomStepperView
 import kotlinx.android.synthetic.main.fragment_poke_api.*
 import kotlinx.coroutines.supervisorScope
 import me.sargunvohra.lib.pokekotlin.model.Pokemon
@@ -33,11 +36,10 @@ import java.lang.Exception
 class PokeAPIFragment : Fragment() {
     private lateinit var viewModel: PokeAPIViewModel
     private lateinit var navController: NavController
-    private lateinit var queryResult: TextView
-    private lateinit var pokemonIDSelector: EditText
-    private lateinit var pokemonSearchBtn: Button
+    private lateinit var pokemonStepper : CustomStepperView
     private lateinit var pokemonNameTV: TextView
     private lateinit var pokemonImageView : ImageView
+    private lateinit var pokemonType: TextView
     private val PokeApi = PokeApiClient()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,29 +52,21 @@ class PokeAPIFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_poke_api, container, false)
+        return inflater.inflate(R.layout.fragment_pokedex_selector, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        pokemonIDSelector = view.findViewById<EditText>(R.id.pokemonNumSelectorET)
-        pokemonSearchBtn = view.findViewById<Button>(R.id.pokemonSearchBtn)
-        pokemonNameTV = view.findViewById<TextView>(R.id.pokemonNameTV)
+        pokemonStepper = view.findViewById<CustomStepperView>(R.id.pokemonStepper)
         pokemonImageView = view.findViewById<ImageView>(R.id.pokemonImageView)
+        pokemonNameTV = view.findViewById<TextView>(R.id.pokemonNameTV)
+        pokemonType = view.findViewById<TextView>(R.id.pokemonTypeTV)
         viewModel.currentPokemon.observe(viewLifecycleOwner) { pokemon ->
             generatePokemonInformation(pokemon)
         }
-        // Reset on click
-        pokemonIDSelector.setOnClickListener {
-            pokemonIDSelector.setText("")
+        pokemonStepper.setOnClickListener { v: View? ->
+            searchAPokemon(pokemonStepper.getCount());
         }
-        pokemonSearchBtn.setOnClickListener {
-            if (!pokemonIDSelector.text.isEmpty() && isValidId(pokemonIDSelector.text.toString())) {
-                searchAPokemon(Integer.parseInt(pokemonIDSelector.text.toString()))
-            } else {
-                pokemonNameTV.text = POKEMON_ERROR_MSG
-                pokemonIDSelector.setText("")
-            }
-        }
+        searchAPokemon(pokemonStepper.getCount())
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -91,6 +85,7 @@ class PokeAPIFragment : Fragment() {
 
     private fun generatePokemonInformation(pokemon: Pokemon) {
         pokemonNameTV.text = pokemon.name.capitalize()
+        pokemonType.text = "Type: " + pokemon.types.first().type.name
         context?.let { Glide.with(it).load(pokemon.sprites.frontDefault).into(pokemonImageView) }
     }
 

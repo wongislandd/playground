@@ -2,7 +2,9 @@ package com.cwong51799.core
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import androidx.constraintlayout.widget.ConstraintLayout
 import kotlinx.android.synthetic.main.custom_stepper_view.view.*
 
@@ -13,8 +15,14 @@ class CustomStepperView @JvmOverloads constructor(
 
     init {
         LayoutInflater.from(context).inflate(R.layout.custom_stepper_view, this, true)
-        minusStep.setOnClickListener { decrementCount() }
-        plusStep.setOnClickListener { incrementCount() }
+        minusStep.setOnClickListener {
+            decrementCount()
+            callOnClick()
+        }
+        plusStep.setOnClickListener {
+            incrementCount()
+            callOnClick()
+        }
     }
 
     fun getCount(): Int {
@@ -32,6 +40,7 @@ class CustomStepperView @JvmOverloads constructor(
         if (currentCount > MIN_QUESTION_COUNT)
             stepperCount.text = (currentCount - 1).toString()
     }
+
 
 
     companion object {

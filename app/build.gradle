@@ -58,9 +58,12 @@ dependencies {
     // Dagger Dependencies
     implementation dagger.dagger_lib
     kapt dagger.dagger_compiler
+    androidTestImplementation dagger.dagger_lib
+
 
     // Dagger.android Dependencies
     implementation dagger.dagger_android
     implementation dagger.dagger_android_support
     kapt dagger.dagger_android_processor
+
 }

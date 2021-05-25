@@ -10,7 +10,7 @@ import java.lang.Thread.sleep
 object RandomFactPageActions {
     fun getARandomFactAndCheckForDisplay(){
         onView(withId(R.id.newFactBtn)).perform(click())
-        sleep(500)
+        sleep(1000)
         onView(withId(R.id.factTextTV)).check(matches(isDisplayed()))
     }
 }
