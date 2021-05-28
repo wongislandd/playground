@@ -17,7 +17,10 @@
     <string name="category">Category</string>
     <string name="default_num_questions">5</string>
     <string name="search_poke_id">Search Pokedex ID</string>
-
+    <string name="poke_weight">%1$d KG</string>
+    <string name="poke_height">%1$d M</string>
+    <string name="height_label">Height</string>
+    <string name="weight_label">Weight</string>
 
     <string-array name="trivia_categories">
         <item>Any</item>

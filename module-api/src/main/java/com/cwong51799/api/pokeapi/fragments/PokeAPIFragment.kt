@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.os.bundleOf
 import androidx.core.view.get
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
@@ -66,6 +67,9 @@ class PokeAPIFragment : Fragment() {
         pokemonStepper.setOnClickListener { v: View? ->
             searchAPokemon(pokemonStepper.getCount());
         }
+        pokemonImageView.setOnClickListener { v: View? ->
+            navigateToDetailedPokemonFragment();
+        }
         searchAPokemon(pokemonStepper.getCount())
         super.onViewCreated(view, savedInstanceState)
     }
@@ -89,11 +93,15 @@ class PokeAPIFragment : Fragment() {
         context?.let { Glide.with(it).load(pokemon.sprites.frontDefault).into(pokemonImageView) }
     }
 
+    private fun navigateToDetailedPokemonFragment() {
+        val bundle = bundleOf("pokemonId" to viewModel.currentPokemon.value?.id)
+        navController.navigate(R.id.detailedPokemonFragment, bundle)
+    }
+
     companion object {
         private val TAG = "PokeAPIFragment"
         private val MAX_POKEMON_ID = 893
         private val MIN_POKEMON_ID = 1
         private val POKEMON_ERROR_MSG = "Error finding Pokemon data. Valid IDs range from $MIN_POKEMON_ID - $MAX_POKEMON_ID"
-
     }
 }

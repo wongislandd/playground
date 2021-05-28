@@ -11,24 +11,15 @@
         android:label="selector_fragment"
         tools:layout="@layout/fragment_selector" >
         <action
-            android:id="@+id/action_APISelector_to_pokeAPI"
-            app:destination="@id/pokeAPIFragment"
-            app:enterAnim="@android:anim/slide_out_right"
-            app:exitAnim="@android:anim/slide_in_left"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
-        <action
             android:id="@+id/action_APISelector_to_randomFact"
             app:destination="@id/randomFactAPIFragment" />
         <action
             android:id="@+id/action_APISelector_to_triviaOptionsFragment"
             app:destination="@id/triviaOptionsFragment" />
+        <action
+            android:id="@+id/action_APISelectorFragment_to_pokeAPIFragment"
+            app:destination="@id/pokeAPIFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/pokeAPIFragment"
-        android:name="com.cwong51799.api.pokeapi.fragments.PokeAPIFragment"
-        android:label="fragment_poke_api"
-        tools:layout="@layout/fragment_poke_api" />
     <fragment
         android:id="@+id/randomFactAPIFragment"
         android:name="com.cwong51799.api.randomfactapi.fragments.RandomFactFragment"
@@ -67,4 +58,17 @@
             android:id="@+id/action_triviaOptionsFragment_to_triviaAPI"
             app:destination="@id/triviaMainFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/pokeAPIFragment"
+        android:name="com.cwong51799.api.pokeapi.fragments.PokeAPIFragment"
+        android:label="PokeAPIFragment" >
+        <action
+            android:id="@+id/action_pokeAPIFragment_to_detailedPokemonFragment"
+            app:destination="@id/detailedPokemonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailedPokemonFragment"
+        android:name="com.cwong51799.api.pokeapi.fragments.DetailedPokemonFragment"
+        android:label="detailed_pokemon_fragment"
+        tools:layout="@layout/detailed_pokemon_fragment" />
 </navigation>
