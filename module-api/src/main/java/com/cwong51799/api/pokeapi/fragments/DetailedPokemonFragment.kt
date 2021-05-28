@@ -13,6 +13,7 @@ import androidx.lifecycle.observe
 import com.bumptech.glide.Glide
 import com.cwong51799.api.R
 import com.cwong51799.api.pokeapi.custom_ui.HeightWeightView
+import com.cwong51799.api.pokeapi.custom_ui.SpriteView
 import com.cwong51799.api.pokeapi.viewmodels.PokeAPIViewModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -43,9 +44,9 @@ class DetailedPokemonFragment : Fragment() {
 
     private fun populatePokemonInfo(view: View, pokemon: Pokemon) {
         val heightWeightView = view.findViewById<HeightWeightView>(R.id.heightWeightView)
-        val pokemonImageView = view.findViewById<ImageView>(R.id.miniPokemonView)
         val pokemonNameTV = view.findViewById<TextView>(R.id.pokemonNameTV)
-        context?.let { Glide.with(it).load(pokemon.sprites.frontDefault).into(pokemonImageView) }
+        val pokemonSpriteScrollView = view.findViewById<SpriteView>(R.id.custom_sprite_scroll_view)
+        pokemonSpriteScrollView.addSpritesToCarosel(pokemon.sprites)
         pokemonNameTV.text = pokemon.name.capitalize()
         heightWeightView.setHeightAndWeight(pokemon.height, pokemon.weight)
     }
