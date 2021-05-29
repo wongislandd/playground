@@ -82,7 +82,9 @@ class PokeAPIFragment : Fragment() {
                 .setTitle("Search a Pokemon")
             val alertDialog = builder.show()
             alertDialog.pokeSearchBtn.setOnClickListener {
-                searchAPokemon(alertDialog.pokeIdInput.text.toString().toInt())
+                if (!alertDialog.pokeIdInput.text.toString().isEmpty()) {
+                    searchAPokemon(alertDialog.pokeIdInput.text.toString().toInt())
+                }
                 alertDialog.dismiss()
             }
         }

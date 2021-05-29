@@ -33,11 +33,13 @@
     />
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/search_pokemon"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight=".05"
         android:background="@color/colorAccent"
-        android:text="Search a pokemon by ID"
+        android:drawableLeft="@drawable/ic_search_icon_foreground"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
     />
 
 

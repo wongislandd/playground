@@ -6,11 +6,12 @@
     android:orientation="vertical"
     tools:context=".pokeapi.fragments.DetailedPokemonFragment">
       <androidx.recyclerview.widget.RecyclerView
-          android:id="@+id/recycler_view"
+          android:id="@+id/sprite_recycler_view"
           android:layout_width="match_parent"
           android:layout_height="0dp"
-          android:layout_weight=".3"
+          android:layout_weight=".2"
           android:orientation="horizontal"
+          tools:background="@color/water_type"
       />
 
         <TextView
@@ -25,6 +26,7 @@
             tools:text="Name"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:gravity="center"
+            android:background="@color/secondary_background"
         />
     <TextView
         android:id="@+id/pokemonIdTV"
@@ -34,6 +36,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:gravity="center"
         tools:text="#001"
+        android:background="@color/secondary_background"
         />
     <com.cwong51799.api.pokeapi.custom_ui.TypeListingView
         android:id="@+id/pokemonTypes"
@@ -41,7 +44,27 @@
         android:layout_height="0dp"
         android:layout_weight=".05"
         android:paddingVertical="5dp"
+        android:background="@color/secondary_background"
     />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".027"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:text="Featured in Versions"
+        android:background="@color/secondary_background"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/game_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".04"
+        android:orientation="horizontal"
+        android:background="@color/secondary_background"
+        />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -49,18 +72,22 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:gravity="center"
         android:text="Base Stats"
+        android:textColor="@android:color/black"
+        android:background="@color/secondary_background"
         />
     <com.cwong51799.api.pokeapi.custom_ui.BaseStatsView
         android:id="@+id/baseStats"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".2"
+        android:background="@color/secondary_background"
     />
     <com.cwong51799.api.pokeapi.custom_ui.HeightWeightView
         android:id="@+id/heightWeightView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".2"
+        android:layout_weight=".1"
+        android:background="@color/secondary_background"
     />
 
 </LinearLayout>

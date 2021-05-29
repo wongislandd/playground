@@ -16,6 +16,7 @@
         android:layout_weight=".2"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@android:color/black"
         android:text="@string/hp"
     />
     <ProgressBar
@@ -41,6 +42,7 @@
             android:layout_weight=".2"
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/black"
             android:text="@string/atk"
             />
         <ProgressBar
@@ -63,6 +65,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:textColor="@android:color/black"
             android:layout_weight=".2"
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -89,6 +92,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".2"
+            android:textColor="@android:color/black"
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:text="@string/sp_atk"
@@ -115,6 +119,7 @@
             android:layout_height="match_parent"
             android:layout_weight=".2"
             android:gravity="center"
+            android:textColor="@android:color/black"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:text="@string/sp_def"
             />
@@ -140,6 +145,7 @@
             android:layout_height="match_parent"
             android:layout_weight=".2"
             android:gravity="center"
+            android:textColor="@android:color/black"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:text="@string/spd"
             />

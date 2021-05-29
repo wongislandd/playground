@@ -14,6 +14,7 @@ import com.cwong51799.api.pokeapi.PokemonType
 import com.cwong51799.api.pokeapi.custom_ui.BaseStatsView
 import com.cwong51799.api.pokeapi.custom_ui.HeightWeightView
 import com.cwong51799.api.pokeapi.custom_ui.TypeListingView
+import com.cwong51799.api.pokeapi.sprite_recycler.GameRecyclerAdapter
 import com.cwong51799.api.pokeapi.sprite_recycler.SpriteRecyclerAdapter
 import com.cwong51799.api.pokeapi.viewmodels.PokeAPIViewModel
 import kotlinx.android.synthetic.main.detailed_pokemon_fragment.*
@@ -21,12 +22,11 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import me.sargunvohra.lib.pokekotlin.client.PokeApiClient
 import me.sargunvohra.lib.pokekotlin.model.Pokemon
-import me.sargunvohra.lib.pokekotlin.model.PokemonSprites
-import org.w3c.dom.Text
 
 class DetailedPokemonFragment : Fragment() {
     private lateinit var viewModel: PokeAPIViewModel
     private lateinit var spriteAdapter : SpriteRecyclerAdapter
+    private lateinit var gameAdapter : GameRecyclerAdapter
     private val PokeApi = PokeApiClient()
 
     override fun onCreateView(
@@ -57,13 +57,36 @@ class DetailedPokemonFragment : Fragment() {
             pokemonTypes.addType(convertTypeToEnum(type.type.name))
         }
         baseStatsView.setStats(pokemon.stats.map { stat -> stat.baseStat })
-        initRecyclerView(pokemon.sprites)
+        initRecyclerView(pokemon)
         pokemonIdTV.text = resources.getString(R.string.poke_id, pokemon.id)
         pokemonNameTV.text = pokemon.name.capitalize()
         heightWeightView.setHeightAndWeight(pokemon.height, pokemon.weight)
     }
 
 
+
+    private fun convertTypeToColor(type : String) : Int {
+        return when (type) {
+            "normal" -> R.color.normal_type
+            "fire" -> R.color.fire_type
+            "water" -> R.color.water_type
+            "electric" -> R.color.electric_type
+            "grass" -> R.color.grass_type
+            "ice" -> R.color.ice_type
+            "fighting" -> R.color.fighting_type
+            "poison" -> R.color.poison_type
+            "ground" -> R.color.ground_type
+            "flying" -> R.color.flying_type
+            "psychic" -> R.color.psychic_type
+            "bug" -> R.color.bug_type
+            "rock" -> R.color.rock_type
+            "ghost" -> R.color.ghost_type
+            "dragon" -> R.color.dragon_type
+            "dark" -> R.color.dark_type
+            "steel" -> R.color.steel_type
+            else -> R.color.fairy_type
+        }
+    }
     private fun convertTypeToEnum(type : String) : PokemonType {
         return when (type) {
             "normal" -> PokemonType.NORMAL
@@ -87,12 +110,21 @@ class DetailedPokemonFragment : Fragment() {
         }
     }
 
-    private fun initRecyclerView(sprites : PokemonSprites) {
-        recycler_view.apply {
+    private fun initRecyclerView(pokemon : Pokemon) {
+        val sprites = pokemon.sprites
+        val games = pokemon.gameIndices.map { game -> game.version.name }
+        game_recycler_view.apply {
+            layoutManager = LinearLayoutManager(this@DetailedPokemonFragment.context, LinearLayoutManager.HORIZONTAL, false)
+            gameAdapter = GameRecyclerAdapter()
+            gameAdapter.submitGames(games)
+            adapter = gameAdapter
+        }
+        sprite_recycler_view.apply {
             layoutManager = LinearLayoutManager(this@DetailedPokemonFragment.context, LinearLayoutManager.HORIZONTAL, false)
             spriteAdapter = SpriteRecyclerAdapter()
             spriteAdapter.submitSprites(sprites)
             adapter = spriteAdapter
+            setBackgroundResource(convertTypeToColor(pokemon.types.first().type.name))
         }
     }
 
