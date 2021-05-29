@@ -26,6 +26,8 @@
         android:layout_weight=".7"
         android:paddingHorizontal="20dp"
         android:paddingVertical="5dp"
+        android:progressDrawable="@drawable/redprogress"
+        tools:progress="50"
         />
     </LinearLayout>
     <LinearLayout
@@ -49,6 +51,8 @@
             android:layout_weight=".7"
             android:paddingHorizontal="20dp"
             android:paddingVertical="5dp"
+            android:progressDrawable="@drawable/orangeprogress"
+            tools:progress="50"
             />
     </LinearLayout>
     <LinearLayout
@@ -72,6 +76,8 @@
             android:layout_weight=".7"
             android:paddingHorizontal="20dp"
             android:paddingVertical="5dp"
+            android:progressDrawable="@drawable/azureprogress"
+            tools:progress="50"
             />
     </LinearLayout>
     <LinearLayout
@@ -95,6 +101,8 @@
             android:layout_weight=".7"
             android:paddingHorizontal="20dp"
             android:paddingVertical="5dp"
+            android:progressDrawable="@drawable/greenprogress"
+            tools:progress="50"
             />
     </LinearLayout>
     <LinearLayout
@@ -118,6 +126,8 @@
             android:paddingHorizontal="20dp"
             android:id="@+id/spDefBar"
             android:paddingVertical="5dp"
+            android:progressDrawable="@drawable/yellowprogress"
+            tools:progress="50"
             />
     </LinearLayout>
     <LinearLayout
@@ -141,6 +151,8 @@
             android:layout_weight=".7"
             android:paddingHorizontal="20dp"
             android:paddingVertical="5dp"
+            android:progressDrawable="@drawable/blueprogress"
+            tools:progress="50"
             />
     </LinearLayout>
 

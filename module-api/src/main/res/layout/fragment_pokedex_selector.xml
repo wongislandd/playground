@@ -25,22 +25,19 @@
         android:autoSizeStepGranularity="2sp"
         android:autoSizeTextType="uniform"
         tools:text="Pokemon"/>
-    <TextView
-        android:id="@+id/pokemonTypeTV"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".05"
-        android:gravity="center"
-        android:autoSizeMaxTextSize="100sp"
-        android:autoSizeMinTextSize="12sp"
-        android:autoSizeStepGranularity="2sp"
-        android:autoSizeTextType="uniform"
-        tools:text="Type"/>
     <com.cwong51799.core.CustomStepperView
         android:id="@+id/pokemonStepper"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".1"
+    />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/search_pokemon"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".05"
+        android:background="@color/colorAccent"
+        android:text="Search a pokemon by ID"
     />
 
 

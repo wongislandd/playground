@@ -29,7 +29,7 @@ class CustomStepperView @JvmOverloads constructor(
     }
 
     fun setCount(count : Int){
-        stepperCount.text = count.toString()
+        stepperCount.setText(count.toString())
     }
 
     fun getCount(): Int {
@@ -39,13 +39,13 @@ class CustomStepperView @JvmOverloads constructor(
     private fun incrementCount() {
         val currentCount = getCount()
         if (currentCount < maxCount)
-            stepperCount.text = (currentCount + 1).toString()
+            stepperCount.setText((currentCount + 1).toString())
     }
 
     private fun decrementCount() {
         val currentCount = getCount()
         if (currentCount > minCount)
-            stepperCount.text = (currentCount - 1).toString()
+            stepperCount.setText((currentCount - 1).toString())
     }
 
     fun setStepperMinMax(min : Int, max : Int) {
