@@ -24,7 +24,6 @@ import me.sargunvohra.lib.pokekotlin.client.PokeApiClient
 import androidx.lifecycle.observe
 import com.bumptech.glide.Glide
 import com.cwong51799.core.CustomStepperView
-import kotlinx.android.synthetic.main.fragment_poke_api.*
 import kotlinx.coroutines.supervisorScope
 import me.sargunvohra.lib.pokekotlin.model.Pokemon
 import java.lang.Exception
@@ -61,6 +60,9 @@ class PokeAPIFragment : Fragment() {
         pokemonImageView = view.findViewById<ImageView>(R.id.pokemonImageView)
         pokemonNameTV = view.findViewById<TextView>(R.id.pokemonNameTV)
         pokemonType = view.findViewById<TextView>(R.id.pokemonTypeTV)
+        pokemonStepper.setStepperMinMax(MIN_POKEMON_ID, MAX_POKEMON_ID)
+        // If there is currently a pokemon set, keep it at that ID.
+        viewModel.currentPokemon.value?.let { pokemon -> pokemonStepper.setCount(pokemon.id) }
         viewModel.currentPokemon.observe(viewLifecycleOwner) { pokemon ->
             generatePokemonInformation(pokemon)
         }

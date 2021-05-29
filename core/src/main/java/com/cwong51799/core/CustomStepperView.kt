@@ -13,6 +13,9 @@ class CustomStepperView @JvmOverloads constructor(
     attrs: AttributeSet? = null
 ) : ConstraintLayout(context, attrs) {
 
+    private var minCount = MIN_QUESTION_COUNT
+    private var maxCount = MAX_QUESTION_COUNT
+
     init {
         LayoutInflater.from(context).inflate(R.layout.custom_stepper_view, this, true)
         minusStep.setOnClickListener {
@@ -25,23 +28,30 @@ class CustomStepperView @JvmOverloads constructor(
         }
     }
 
+    fun setCount(count : Int){
+        stepperCount.text = count.toString()
+    }
+
     fun getCount(): Int {
         return Integer.parseInt(stepperCount.text.toString())
     }
 
     private fun incrementCount() {
         val currentCount = getCount()
-        if (currentCount < MAX_QUESTION_COUNT)
+        if (currentCount < maxCount)
             stepperCount.text = (currentCount + 1).toString()
     }
 
     private fun decrementCount() {
         val currentCount = getCount()
-        if (currentCount > MIN_QUESTION_COUNT)
+        if (currentCount > minCount)
             stepperCount.text = (currentCount - 1).toString()
     }
 
-
+    fun setStepperMinMax(min : Int, max : Int) {
+        minCount = min
+        maxCount = max
+    }
 
     companion object {
         private const val MIN_QUESTION_COUNT = 1

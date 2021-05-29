@@ -9,7 +9,7 @@
           android:id="@+id/recycler_view"
           android:layout_width="match_parent"
           android:layout_height="0dp"
-          android:layout_weight=".1"
+          android:layout_weight=".3"
           android:orientation="horizontal"
       />
 
@@ -17,12 +17,45 @@
             android:id="@+id/pokemonNameTV"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".1"
+            android:layout_weight=".05"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
             tools:text="Name"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:gravity="center"
         />
-
+    <TextView
+        android:id="@+id/pokemonIdTV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".025"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:gravity="center"
+        tools:text="#001"
+        />
+    <com.cwong51799.api.pokeapi.custom_ui.TypeListingView
+        android:id="@+id/pokemonTypes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".05"
+        android:paddingVertical="5dp"
+    />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".025"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:gravity="center"
+        android:text="Base Stats"
+        />
+    <com.cwong51799.api.pokeapi.custom_ui.BaseStatsView
+        android:id="@+id/baseStats"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".2"
+    />
     <com.cwong51799.api.pokeapi.custom_ui.HeightWeightView
         android:id="@+id/heightWeightView"
         android:layout_width="match_parent"

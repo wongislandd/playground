@@ -19,8 +19,16 @@
     <string name="search_poke_id">Search Pokedex ID</string>
     <string name="poke_weight">%1$d KG</string>
     <string name="poke_height">%1$d M</string>
+    <string name="poke_id">#%1$d</string>
     <string name="height_label">Height</string>
     <string name="weight_label">Weight</string>
+    <string name="types">Types</string>
+    <string name="hp">HP</string>
+    <string name="atk">ATK</string>
+    <string name="def">DEF</string>
+    <string name="sp_atk">SP ATK</string>
+    <string name="sp_def">SP DEF</string>
+    <string name="spd">SPD</string>
 
     <string-array name="trivia_categories">
         <item>Any</item>

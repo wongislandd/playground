@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:gravity="center"
-    >
 
     <TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:gravity="center_vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ice_type_background"
+        android:textColor="@android:color/black"
         android:paddingHorizontal="15dp"
         android:paddingVertical="4dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         tools:text="Ice" />
-</LinearLayout>
