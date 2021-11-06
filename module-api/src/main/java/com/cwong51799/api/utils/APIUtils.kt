@@ -12,7 +12,7 @@ object APIUtils {
     private const val randomFactApiBaseUrl = "https://uselessfacts.jsph.pl/"
     private const val triviaApiBaseUrl = "https://opentdb.com/"
 
-    val POKE_API = API("PokeAPI", pokeApiBaseUrl, R.drawable.pokeapi_background, R.id.pokeAPIFragment)
+    private val POKE_API = API("PokeAPI", pokeApiBaseUrl, R.drawable.pokeapi_background, R.id.pokeAPIFragment)
     val RANDOM_FACT_API = API("RandomFact", randomFactApiBaseUrl, R.drawable.randomfact_background, R.id.randomFactAPIFragment)
     val TRIVIA_API = API("TriviaApi", triviaApiBaseUrl, R.drawable.opentdb_background, R.id.triviaOptionsFragment)
 

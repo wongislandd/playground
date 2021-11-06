@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DesignSurface">
-    <option name="filePathToZoomLevelMap">
-      <map>
-        <entry key="..\:/Users/cwong/StudioProjects/playground/module-api/src/main/res/layout/detailed_pokemon_fragment.xml" value="0.10916919959473151" />
-        <entry key="..\:/Users/cwong/StudioProjects/playground/module-api/src/main/res/layout/fragment_pokedex_selector.xml" value="0.14260385005065856" />
-        <entry key="..\:/Users/cwong/StudioProjects/playground/module-api/src/main/res/layout/fragment_random_fact.xml" value="0.3203125" />
-      </map>
-    </option>
-  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

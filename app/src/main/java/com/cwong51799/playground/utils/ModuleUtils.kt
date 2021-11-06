@@ -13,7 +13,6 @@ data class Module (val name : String, val activityClass : Class<out Any>, val ba
  */
 object ModuleUtils {
     val API_MODULE = Module("API Tester", APIActivity::class.java, R.drawable.flower_background)
-    val JETPACK_COMPOSE = Module("J")
     val DATABASE_MODULE = Module("Database Tester", DatabaseActivity::class.java, R.drawable.database_background)
     val moduleList = listOf(
         API_MODULE, DATABASE_MODULE
