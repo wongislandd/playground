@@ -69,11 +69,11 @@ class PokeAPIFragment : Fragment() {
         }
         pokemonStepper.setOnClickListener { v: View? ->
             if (viewModel.currentPokemon.value?.id != pokemonStepper.getCount()) {
-                searchAPokemon(pokemonStepper.getCount());
+                searchAPokemon(pokemonStepper.getCount())
             }
         }
         pokemonImageView.setOnClickListener { v: View? ->
-            navigateToDetailedPokemonFragment();
+            navigateToDetailedPokemonFragment()
         }
         pokemonSearcher.setOnClickListener { v : View? ->
             val dialogView = LayoutInflater.from(context).inflate(R.layout.number_dialog, null)

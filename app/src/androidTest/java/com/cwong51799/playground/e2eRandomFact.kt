@@ -19,7 +19,7 @@ class RandomFactTest(){
 
     @Test
     fun getAFact(){
-        ModuleSelectorPageActions.selectModule(ModuleUtils.APIModule.name)
+        ModuleSelectorPageActions.selectModule(ModuleUtils.API_MODULE.name)
         APISelectorPageActions.selectApiWithBackgroundResource(APIUtils.RANDOM_FACT_API.backgroundResource)
         RandomFactPageActions.getARandomFactAndCheckForDisplay()
         RandomFactPageActions.getARandomFactAndCheckForDisplay()

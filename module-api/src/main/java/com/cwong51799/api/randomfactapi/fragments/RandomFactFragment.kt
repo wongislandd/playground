@@ -1,23 +1,23 @@
 package com.cwong51799.api.randomfactapi.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import retrofit2.converter.moshi.MoshiConverterFactory
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.cwong51799.api.R
-import com.cwong51799.api.randomfactapi.viewmodels.RandomFactViewModel
 import com.cwong51799.api.randomfactapi.network.FactResponse
 import com.cwong51799.api.randomfactapi.network.RandomFactServices
+import com.cwong51799.api.randomfactapi.viewmodels.RandomFactViewModel
 import com.cwong51799.api.utils.APIUtils
 import retrofit2.*
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 /**
  * A simple [Fragment] subclass.
@@ -28,9 +28,12 @@ class RandomFactFragment : Fragment() {
     private lateinit var viewModel: RandomFactViewModel
     private lateinit var navController : NavController
 
+    private lateinit var factText: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         viewModel = ViewModelProviders.of(this).get(RandomFactViewModel::class.java)
         navController = NavHostFragment.findNavController(this)
+        viewModel.getNewFact()
         super.onCreate(savedInstanceState)
     }
 
@@ -43,34 +46,24 @@ class RandomFactFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val factText = view.findViewById<TextView>(R.id.factTextTV)
+        factText = view.findViewById(R.id.factTextTV)
         viewModel.currentFact.observe(viewLifecycleOwner) { fact ->
-            factText.text = fact
-            factText.visibility = if (fact != emptyResponseBodyStr) View.VISIBLE else View.INVISIBLE
+            setFactText(fact)
+        }
+        viewModel.errorMessage.observe(viewLifecycleOwner) { error ->
+            setFactText(error)
         }
         val factFinder = view.findViewById<Button>(R.id.newFactBtn)
-        val retrofit = Retrofit.Builder().baseUrl(APIUtils.RANDOM_FACT_API.baseUrl).addConverterFactory(MoshiConverterFactory.create()).build()
-        val FactApi = retrofit.create(RandomFactServices::class.java)
-        factFinder.setOnClickListener {
-            val call = FactApi.getFact()
-            call.enqueue(object : Callback<FactResponse> {
-                override fun onFailure(call: Call<FactResponse>, t: Throwable) {
-                    factText.text = t.message
-                }
 
-                override fun onResponse(call: Call<FactResponse>, response: Response<FactResponse>) {
-                    if(!response.isSuccessful){
-                        factText.text = "Code: " + response.code()
-                        return
-                    }
-                    viewModel.changeCurrentFact(response.body()?.text ?: emptyResponseBodyStr)
-                }
-            })
+        factFinder.setOnClickListener {
+            viewModel.getNewFact()
         }
         super.onViewCreated(view, savedInstanceState)
     }
 
-    companion object {
-        const val emptyResponseBodyStr = "Response body empty."
+    private fun setFactText(fact: String) {
+        factText.text = fact
+        factText.visibility = if (fact.isNotEmpty()) View.VISIBLE else View.INVISIBLE
     }
+
 }

@@ -11,7 +11,6 @@ import com.cwong51799.playground.utils.ModuleUtils
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.lang.Thread.sleep
 
 
 @RunWith(AndroidJUnit4::class)
@@ -28,7 +27,7 @@ class TriviaTest(){
      */
     @Test
     fun playTrivia() {
-        ModuleSelectorPageActions.selectModule(ModuleUtils.APIModule.name)
+        ModuleSelectorPageActions.selectModule(ModuleUtils.API_MODULE.name)
         APISelectorPageActions.selectApiWithBackgroundResource(APIUtils.TRIVIA_API.backgroundResource)
         TriviaPageActions.clickBeginTrivia()
         TriviaPageActions.waitForTriviaToLoad()

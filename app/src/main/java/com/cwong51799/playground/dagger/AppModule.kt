@@ -20,6 +20,6 @@ abstract class AppModule {
     @ActivityScope @ContributesAndroidInjector()
     abstract fun contributesDatabaseActivityInjector(): DatabaseActivity
 
-//    @ActivityScope @ContributesAndroidInjector()
-//    abstract fun contributesHajimeActivityInjector(): HajimeActivity
+    @ActivityScope @ContributesAndroidInjector()
+    abstract fun contributesComposeActivityInjector(): ComposeActivity
 }

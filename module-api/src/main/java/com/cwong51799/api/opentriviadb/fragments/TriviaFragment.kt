@@ -117,6 +117,5 @@ class TriviaFragment : Fragment() {
         }
     }
 
-    companion object {
-    }
+    companion object
 }

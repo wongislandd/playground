@@ -113,7 +113,5 @@ class PostQuestionFragment : Fragment() {
         numIncorrectTV.text = viewModel.numIncorrect.toString()
     }
 
-    companion object {
-
-    }
+    companion object
 }

@@ -16,6 +16,9 @@ object APIUtils {
     val RANDOM_FACT_API = API("RandomFact", randomFactApiBaseUrl, R.drawable.randomfact_background, R.id.randomFactAPIFragment)
     val TRIVIA_API = API("TriviaApi", triviaApiBaseUrl, R.drawable.opentdb_background, R.id.triviaOptionsFragment)
 
+    val RandomFactServices = Retrofit.Builder().baseUrl(RANDOM_FACT_API.baseUrl).addConverterFactory(MoshiConverterFactory.create()).build().create(
+        com.cwong51799.api.randomfactapi.network.RandomFactServices::class.java)
+
     val TriviaServices = Retrofit.Builder().baseUrl(triviaApiBaseUrl).addConverterFactory(
     MoshiConverterFactory.create()).build().create(TriviaServices::class.java)
 
