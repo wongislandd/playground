@@ -1,7 +1,7 @@
 // File for all the extensions and versions
 ext {
     sharedMinSdkVersion = 16
-    sharedTargetSdkVersion = 29
+    sharedTargetSdkVersion = 31
     sharedVersionCode = 1
     sharedVersionName = "1.0"
 
