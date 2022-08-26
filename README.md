@@ -9,6 +9,8 @@ modules will focus on a certain skill.
 I'm in no rush with this and will probably leave it more or less untouched once school starts. It'll serve as a good reference to ramp up on Android development when the time comes. 
 
 <b> This app is and will always be a work in progress as it reflects my experience as an Android engineer.</b>
+
+
 ![unnamed](https://user-images.githubusercontent.com/46093907/186963091-4174ae7c-1a6c-4269-952d-970dd178003e.png)
 ![unnamed (3)](https://user-images.githubusercontent.com/46093907/186963111-349e5633-0b25-497c-ac61-6b1eaa81bf99.png)
 ![unnamed (4)](https://user-images.githubusercontent.com/46093907/186963116-c3d3f39e-1802-4d28-8082-b7fbd9b80efa.png)
